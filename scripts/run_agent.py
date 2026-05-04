@@ -25,7 +25,7 @@ import google.generativeai as genai
 from jinja2 import Environment, FileSystemLoader
  
 HELSINKI = pytz.timezone("Europe/Helsinki")
-logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+logging.basicConfig(level=logging.DEBUG, format="%(levelname)s %(message)s")
 log = logging.getLogger("tp-agent")
  
 GEMINI_API_KEY  = os.environ.get("GEMINI_API_KEY", "")
@@ -162,7 +162,14 @@ def fetch_rss_items():
         try:
             log.info(f"Fetching: {feed_cfg['name']}")
             feed = feedparser.parse(feed_cfg["url"],
-                                    request_headers={"User-Agent": "TP-Agent/1.0"})
+                                    request_headers={"User-Agent": "Mozilla/5.0 (compatible; TP-Agent/1.0)"})
+            # Diagnostic: log raw feed status
+            status    = getattr(feed, "status", "no-status")
+            n_entries = len(feed.entries)
+            bozo      = getattr(feed, "bozo", False)
+            bozo_exc  = str(getattr(feed, "bozo_exception", "")) if bozo else ""
+            log.info(f"  status={status} entries={n_entries} bozo={bozo} {bozo_exc[:80]}")
+ 
             before = len(items)
             for entry in feed.entries:
                 title   = getattr(entry, "title",   "").strip()
@@ -171,9 +178,13 @@ def fetch_rss_items():
                 pub_str = getattr(entry, "published", "") or getattr(entry, "updated", "")
                 if not title or not link:
                     continue
-                if not is_recent(entry):
+                recent = is_recent(entry)
+                tp     = is_tp_relevant(f"{title} {summary}")
+                if not recent:
+                    log.debug(f"  SKIP old: {title[:60]}")
                     continue
-                if not is_tp_relevant(f"{title} {summary}"):
+                if not tp:
+                    log.debug(f"  SKIP non-TP: {title[:60]}")
                     continue
                 items.append({
                     "id":      item_id(link),
@@ -184,7 +195,8 @@ def fetch_rss_items():
                     "pub":     pub_str,
                     "open":    feed_cfg["open"],
                 })
-            log.info(f"  -> {len(items) - before} items")
+            added = len(items) - before
+            log.info(f"  -> {added} TP items (from {n_entries} entries)")
         except Exception as e:
             log.warning(f"Feed failed {feed_cfg['name']}: {e}")
     log.info(f"Total fetched: {len(items)}")
