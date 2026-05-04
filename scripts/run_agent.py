@@ -74,47 +74,45 @@ LENSES = [
 REGIONS = ["Global", "EU", "US", "APAC", "Nordic", "Other"]
  
 RSS_FEEDS = [
-    # ✅ Confirmed working feeds
-    {"name": "Tax Foundation",      "url": "https://taxfoundation.org/feed/",                                          "open": True},
-    {"name": "Tax Justice Network", "url": "https://taxjustice.net/feed/",                                             "open": True},
-    {"name": "EU Tax Observatory",  "url": "https://www.taxobservatory.eu/feed/",                                      "open": True},
-    {"name": "TP Asia",             "url": "https://www.transferpricingasia.com/feed/",                                "open": True},
+    # ✅ Confirmed working
+    {"name": "Tax Foundation",      "url": "https://taxfoundation.org/feed/",                                                          "open": True},
+    {"name": "Tax Justice Network", "url": "https://taxjustice.net/feed/",                                                             "open": True},
+    {"name": "EU Tax Observatory",  "url": "https://www.taxobservatory.eu/feed/",                                                      "open": True},
+    {"name": "TP Asia",             "url": "https://www.transferpricingasia.com/feed/",                                                "open": True},
+    {"name": "TaxGuru India",       "url": "https://taxguru.in/category/income-tax/feed/",                                            "open": True},
  
-    # MNE Tax — corrected URL (no trailing slash needed, try www)
-    {"name": "MNE Tax",             "url": "https://mnetax.com/feed/",                                                 "open": True},
+    # MNE Tax — try atom feed
+    {"name": "MNE Tax",             "url": "https://mnetax.com/feed/atom/",                                                            "open": True},
  
-    # OECD iLibrary tax working feed
-    {"name": "OECD iLibrary Tax",   "url": "https://www.oecd-ilibrary.org/taxation/news/rss",                         "open": True},
+    # Kluwer — try direct WordPress feed path
+    {"name": "Kluwer Tax Blog",     "url": "https://kluwertaxlawblog.com/?feed=rss2",                                                  "open": True},
  
-    # Tax Foundation international specifically
-    {"name": "Tax Foundation Intl", "url": "https://taxfoundation.org/tag/international-taxes/feed/",                 "open": True},
+    # Tax Foundation international tag — corrected slug
+    {"name": "Tax Fdn Global",      "url": "https://taxfoundation.org/tag/international/feed/",                                        "open": True},
  
-    # Kluwer Tax Law Blog — corrected (www subdomain)
-    {"name": "Kluwer Tax Blog",     "url": "https://www.kluwertaxlawblog.com/feed/",                                   "open": True},
+    # Lexology — corrected RSS endpoint
+    {"name": "Lexology Tax",        "url": "https://www.lexology.com/rss/feeds/newcontent.ashx?topics=international-tax",              "open": True},
  
-    # TaxGuru India — corrected category slug
-    {"name": "TaxGuru India",       "url": "https://taxguru.in/category/income-tax/feed/",                            "open": True},
+    # CJEU — corrected press release feed
+    {"name": "CJEU Press",          "url": "https://curia.europa.eu/jcms/upload/docs/application/rss/2019-03/cp_en.xml",               "open": True},
  
-    # US Tax Court — corrected URL path
-    {"name": "US Tax Court",        "url": "https://ustaxcourt.gov/rss/opinions.xml",                                  "open": True},
+    # US Tax Court — try alternative path
+    {"name": "US Tax Court",        "url": "https://www.ustaxcourt.gov/sitemap/opinions.xml",                                          "open": True},
  
-    # EUR-Lex — use simpler working RSS format
-    {"name": "EUR-Lex Tax",         "url": "https://eur-lex.europa.eu/search.html?scope=EURLEX&text=transfer+pricing&lang=en&type=quick&rss=true", "open": True},
+    # EUR-Lex — TP-specific query RSS
+    {"name": "EUR-Lex TP",          "url": "https://eur-lex.europa.eu/search.html?scope=EURLEX&text=transfer+pricing&lang=en&type=quick&rss=true", "open": True},
  
-    # CJEU press releases RSS (confirmed working)
-    {"name": "CJEU Press",          "url": "https://curia.europa.eu/jcms/upload/docs/application/rss/2019-03/cp_en.xml", "open": True},
+    # Global Tax News — WordPress-based TP news aggregator
+    {"name": "Global Tax News",     "url": "https://www.globaltaxnews.ey.com/feed",                                                    "open": True},
  
-    # Taxlinked — TP practitioner community news
-    {"name": "Taxlinked",           "url": "https://taxlinked.net/feed/",                                              "open": True},
+    # Tax Analysts (open headlines)
+    {"name": "Tax Analysts",        "url": "https://www.taxanalysts.org/feed",                                                         "open": True},
  
-    # TP News — dedicated transfer pricing news site
-    {"name": "TP News",             "url": "https://tpnews.ca/feed/",                                                  "open": True},
+    # PwC Tax Policy — publishes TP alerts
+    {"name": "PwC Tax Policy",      "url": "https://www.pwc.com/gx/en/services/tax/tax-policy-bulletin/rss.xml",                       "open": True},
  
-    # International Tax Plaza — daily TP/international tax news
-    {"name": "Int'l Tax Plaza",     "url": "https://www.internationaltaxplaza.info/feed/",                             "open": True},
- 
-    # Lexology — international tax & TP articles (open access)
-    {"name": "Lexology Tax",        "url": "https://www.lexology.com/rss/hub.ashx?hub=international-tax",              "open": True},
+    # KPMG Tax News — international tax updates
+    {"name": "KPMG Tax",            "url": "https://home.kpmg/xx/en/home/insights/tax.rss.html",                                       "open": True},
 ]
  
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -276,7 +274,21 @@ def classify_with_gemini(items):
         )
         try:
             log.info(f"Classifying batch {i//15 + 1} ({len(batch)} items)...")
-            raw = model.generate_content(prompt).text.strip()
+            # Retry up to 3 times on quota errors
+            raw = None
+            for attempt in range(3):
+                try:
+                    raw = model.generate_content(prompt).text.strip()
+                    break
+                except Exception as e:
+                    if "429" in str(e) and attempt < 2:
+                        wait = 35 * (attempt + 1)
+                        log.warning(f"Quota hit, retrying in {wait}s...")
+                        time.sleep(wait)
+                    else:
+                        raise
+            if raw is None:
+                raise Exception("All retries failed")
             if raw.startswith("```"):
                 raw = raw.split("```")[1]
                 if raw.startswith("json"):
@@ -465,3 +477,8 @@ def main():
  
 if __name__ == "__main__":
     main()
+ 
+
+
+
+
