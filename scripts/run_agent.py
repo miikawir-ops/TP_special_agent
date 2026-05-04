@@ -30,27 +30,32 @@ log = logging.getLogger("tp-agent")
 # ── Configuration ────────────────────────────────────────────────────────────
  
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-LOOKBACK_HOURS = 26        # catch items from yesterday's run too
+LOOKBACK_HOURS = 72        # 3 days — catches items across weekend gaps
 MAX_ITEMS      = 40        # cap total items on page
-REQUEST_TIMEOUT = 12       # seconds per HTTP request
+REQUEST_TIMEOUT = 15       # seconds per HTTP request
  
-# TP/tax keyword filter — article must contain at least one of these
+# TP/tax keyword filter — article must contain at least one of these.
+# Broad enough to catch TP-relevant content from specialist feeds
+# whose headlines don't always use the exact phrase "transfer pricing".
 TP_KEYWORDS = [
     "transfer pricing", "transfer price",
-    "arm's length", "arm's-length",
+    "arm's length", "arm's-length", "arms length",
     "BEPS", "pillar two", "pillar 2", "GloBE", "UTPR", "STTR",
-    "OECD tax", "tax treaty", "double taxation",
-    "permanent establishment", "PE attribution",
+    "OECD", "tax treaty", "double taxation",
+    "permanent establishment",
     "intangibles", "DEMPE",
-    "country-by-country", "CbCR", "CbC report",
+    "country-by-country", "CbCR", "CbC",
     "advance pricing", "APA",
-    "mutual agreement procedure", "MAP",
+    "mutual agreement", "MAP",
     "DAC6", "DAC7", "ATAD",
     "diverted profits", "controlled foreign",
-    "related party", "intra-group",
-    "tax dispute", "tax court", "tax ruling",
+    "related party", "intra-group", "intercompany",
+    "tax dispute", "tax court", "tax ruling", "tax case",
     "thin capitalisation", "thin capitalization",
     "profit shifting", "base erosion",
+    "withholding tax", "royalt",
+    "international tax", "corporate tax",
+    "state aid", "tax avoidance",
 ]
  
 # Focus lenses (secondary tags — TP is always the universe)
@@ -313,6 +318,7 @@ def fetch_rss_items() -> list[dict]:
                     "pub":     pub_str,
                     "open":    feed_cfg["open"],
                 })
+            log.info(f"  {feed_cfg['name']}: {len([i for i in items if i['source']==feed_cfg['name']])} items")
         except Exception as e:
             log.warning(f"RSS fetch failed for {feed_cfg['name']}: {e}")
     log.info(f"RSS: {len(items)} TP-relevant items fetched")
@@ -513,4 +519,3 @@ def main():
  
 if __name__ == "__main__":
     main()
- 
