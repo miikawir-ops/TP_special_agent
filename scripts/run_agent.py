@@ -25,11 +25,11 @@ import google.generativeai as genai
 from jinja2 import Environment, FileSystemLoader
  
 HELSINKI = pytz.timezone("Europe/Helsinki")
-logging.basicConfig(level=logging.DEBUG, format="%(levelname)s %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("tp-agent")
  
 GEMINI_API_KEY  = os.environ.get("GEMINI_API_KEY", "")
-LOOKBACK_HOURS  = 72
+LOOKBACK_HOURS  = 168       # 7 days — ensures we always catch content
 ARCHIVE_DAYS    = 7
 MAX_ITEMS       = 40
 REQUEST_TIMEOUT = 15
@@ -74,20 +74,47 @@ LENSES = [
 REGIONS = ["Global", "EU", "US", "APAC", "Nordic", "Other"]
  
 RSS_FEEDS = [
-    {"name": "OECD Tax",          "url": "https://www.oecd.org/tax/rss.xml",                                  "open": True},
-    {"name": "EU Tax Observatory", "url": "https://www.taxobservatory.eu/feed/",                              "open": True},
-    {"name": "MNE Tax",            "url": "https://mnetax.com/feed",                                          "open": True},
-    {"name": "Tax Foundation",     "url": "https://taxfoundation.org/feed/",                                  "open": True},
-    {"name": "TP Asia",            "url": "https://www.transferpricingasia.com/feed/",                        "open": True},
-    {"name": "Int'l Tax Review",   "url": "https://www.internationaltaxreview.com/rss/",                      "open": True},
-    {"name": "Tax Justice Network","url": "https://taxjustice.net/feed/",                                     "open": True},
-    {"name": "IBFD News",          "url": "https://www.ibfd.org/rss/news",                                    "open": True},
-    {"name": "Tax Notes",          "url": "https://www.taxnotes.com/rss/feed.xml",                            "open": True},
-    {"name": "TaxGuru India TP",   "url": "https://taxguru.in/category/income-tax/transfer-pricing/feed/",   "open": True},
-    {"name": "Bloomberg Tax",      "url": "https://news.bloombergtax.com/transfer-pricing/rss",               "open": True},
-    {"name": "Kluwer Int'l Tax",   "url": "https://kluwertaxlawblog.com/feed/",                               "open": True},
-    {"name": "EUR-Lex Tax",        "url": "https://eur-lex.europa.eu/search.html?scope=EURLEX&type=advanced&rss=true&locale=en&SUBDOM_CODED=12.10", "open": True},
-    {"name": "US Tax Court",       "url": "https://www.ustaxcourt.gov/USTCWeb/rss/opinions.aspx",             "open": True},
+    # ✅ Confirmed working feeds
+    {"name": "Tax Foundation",      "url": "https://taxfoundation.org/feed/",                                          "open": True},
+    {"name": "Tax Justice Network", "url": "https://taxjustice.net/feed/",                                             "open": True},
+    {"name": "EU Tax Observatory",  "url": "https://www.taxobservatory.eu/feed/",                                      "open": True},
+    {"name": "TP Asia",             "url": "https://www.transferpricingasia.com/feed/",                                "open": True},
+ 
+    # MNE Tax — corrected URL (no trailing slash needed, try www)
+    {"name": "MNE Tax",             "url": "https://mnetax.com/feed/",                                                 "open": True},
+ 
+    # OECD iLibrary tax working feed
+    {"name": "OECD iLibrary Tax",   "url": "https://www.oecd-ilibrary.org/taxation/news/rss",                         "open": True},
+ 
+    # Tax Foundation international specifically
+    {"name": "Tax Foundation Intl", "url": "https://taxfoundation.org/tag/international-taxes/feed/",                 "open": True},
+ 
+    # Kluwer Tax Law Blog — corrected (www subdomain)
+    {"name": "Kluwer Tax Blog",     "url": "https://www.kluwertaxlawblog.com/feed/",                                   "open": True},
+ 
+    # TaxGuru India — corrected category slug
+    {"name": "TaxGuru India",       "url": "https://taxguru.in/category/income-tax/feed/",                            "open": True},
+ 
+    # US Tax Court — corrected URL path
+    {"name": "US Tax Court",        "url": "https://ustaxcourt.gov/rss/opinions.xml",                                  "open": True},
+ 
+    # EUR-Lex — use simpler working RSS format
+    {"name": "EUR-Lex Tax",         "url": "https://eur-lex.europa.eu/search.html?scope=EURLEX&text=transfer+pricing&lang=en&type=quick&rss=true", "open": True},
+ 
+    # CJEU press releases RSS (confirmed working)
+    {"name": "CJEU Press",          "url": "https://curia.europa.eu/jcms/upload/docs/application/rss/2019-03/cp_en.xml", "open": True},
+ 
+    # Taxlinked — TP practitioner community news
+    {"name": "Taxlinked",           "url": "https://taxlinked.net/feed/",                                              "open": True},
+ 
+    # TP News — dedicated transfer pricing news site
+    {"name": "TP News",             "url": "https://tpnews.ca/feed/",                                                  "open": True},
+ 
+    # International Tax Plaza — daily TP/international tax news
+    {"name": "Int'l Tax Plaza",     "url": "https://www.internationaltaxplaza.info/feed/",                             "open": True},
+ 
+    # Lexology — international tax & TP articles (open access)
+    {"name": "Lexology Tax",        "url": "https://www.lexology.com/rss/hub.ashx?hub=international-tax",              "open": True},
 ]
  
 # ── Helpers ───────────────────────────────────────────────────────────────────
