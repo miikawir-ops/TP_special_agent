@@ -1,0 +1,51 @@
+Global transfer pricing intelligence
+
+What moved in transfer pricing
+and international tax today
+Daily briefing covering OECD/UN developments, Pillar Two, court decisions, and regulatory changes — filtered and classified by AI across all major TP topics. All items relate to transfer pricing and taxation.
+
+Items today
+
+{{ total_items }}
+
+Lenses active
+
+{{ lens_order | length }}
+
+Landmark / Major
+
+{{ high_importance_count }}
+
+Updated
+
+{{ generated_date }}
+
+Focus:
+All
+{% for lens in lens_order %}{{ lens }}
+{% endfor %}
+{% if lens_order %} {% for lens in lens_order %} {% set items = by_lens[lens] %}
+{{ lens }}
+{{ items | length }} item{{ 's' if items | length != 1 }}
+{% for item in items %}
+{{ item.source }}
+{{ importance_labels.get(item.importance, 'Update') }}
+{% if item.accessible %} {{ item.title }} {% else %} {{ item.title }} {% endif %}
+{% if item.ai_summary %}
+{{ item.ai_summary }}
+
+{% endif %}
+{% if item.pub %}{{ item.pub[:16] }}{% else %}today{% endif %}
+{% if item.accessible %}
+Read
+{% else %}
+subscription required
+{% endif %}
+{% endfor %}
+{% endfor %} {% else %}
+No transfer pricing news found in the last 26 hours.
+Check back tomorrow.
+{% endif %}
+TP Special Agent · Built in Espoo, Finland · Powered by COBHC
+AI Valuechain Agent
+Not legal advice · Sources may require subscription
