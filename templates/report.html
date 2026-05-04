@@ -1,8 +1,19 @@
+TP
+TP Special Agent
+{{ generated_at }}
+AI Valuechain Agent →
+TP Signal of the Day
+
+{{ signal.headline }}
+{{ signal.body }}
+
+{{ signal.lens }}
+{{ signal.urgency }} urgency
 Global transfer pricing intelligence
 
 What moved in transfer pricing
 and international tax today
-Daily briefing covering OECD/UN developments, Pillar Two, court decisions, and regulatory changes — filtered and classified by AI across all major TP topics. All items relate to transfer pricing and taxation.
+Daily briefing covering OECD, Pillar Two, court decisions and regulatory changes — filtered and classified by AI. All items relate to transfer pricing and taxation.
 
 Items today
 
@@ -20,22 +31,33 @@ Updated
 
 {{ generated_date }}
 
-Focus:
+Regional activity today
+
+{% for region, count in region_counts.items() %} {% if count > 0 %}
+{{ count }}
+{{ region }}
+{% endif %} {% endfor %}
+Lens:
 All
 {% for lens in lens_order %}{{ lens }}
 {% endfor %}
-{% if lens_order %} {% for lens in lens_order %} {% set items = by_lens[lens] %}
+{% if lens_order %} {% for lens in lens_order %} {% set items = by_lens[lens] %} {% set spark = sparklines.get(lens, [0,0,0,0,0,0,0]) %} {% set spark_max = [spark | max, 1] | max %}
 {{ lens }}
+{% for v in spark %}
+{% endfor %}
 {{ items | length }} item{{ 's' if items | length != 1 }}
 {% for item in items %}
 {{ item.source }}
 {{ importance_labels.get(item.importance, 'Update') }}
+{% if item.region and item.region != 'Global' %}
+{{ item.region }}
+{% endif %}
 {% if item.accessible %} {{ item.title }} {% else %} {{ item.title }} {% endif %}
 {% if item.ai_summary %}
 {{ item.ai_summary }}
 
 {% endif %}
-{% if item.pub %}{{ item.pub[:16] }}{% else %}today{% endif %}
+{{ item.freshness or 'today' }}
 {% if item.accessible %}
 Read
 {% else %}
@@ -43,9 +65,19 @@ subscription required
 {% endif %}
 {% endfor %}
 {% endfor %} {% else %}
-No transfer pricing news found in the last 26 hours.
+No transfer pricing news found in the last 72 hours.
 Check back tomorrow.
 {% endif %}
-TP Special Agent · Built in Espoo, Finland · Powered by COBHC
-AI Valuechain Agent
-Not legal advice · Sources may require subscription
+{% if archive_by_day %}
+7-day archive — transfer pricing news
+
+{% for date_key, day_items in archive_by_day %}
+{{ day_labels.get(date_key, date_key) }}
+
+{% for item in day_items %}
+{{ item.source }}
+{% if item.get('accessible', True) %} {{ item.title }} {% else %} {{ item.title }} {% endif %}
+{{ item.get('lens','') | replace('& ','') | truncate(14, True, '') }}
+{% endfor %}
+{% endfor %}
+{% endif %}
