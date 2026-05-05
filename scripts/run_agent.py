@@ -38,18 +38,25 @@ REPO_ROOT    = Path(__file__).parent.parent
 ARCHIVE_FILE = REPO_ROOT / "archive.json"
  
 TP_KEYWORDS = [
+    # Core transfer pricing
     "transfer pricing", "transfer price",
     "arm's length", "arm's-length", "arms length",
-    "BEPS", "pillar two", "pillar 2", "GloBE", "UTPR", "STTR",
-    "OECD", "tax treaty", "double taxation",
-    "permanent establishment",
+    "related party", "intra-group", "intercompany",
+    "controlled transaction", "comparable",
+ 
+    # Pillar One & Amount B — genuinely TP-relevant
+    "pillar one", "pillar 1", "amount B", "amount A",
+    "reallocation of profits", "market jurisdiction",
+ 
+    # OECD / international tax frameworks with TP dimension
+    "BEPS", "OECD", "tax treaty", "double taxation",
+    "permanent establishment", "PE risk",
     "intangibles", "DEMPE",
     "country-by-country", "CbCR", "CbC",
     "advance pricing", "APA",
     "mutual agreement", "MAP",
     "DAC6", "DAC7", "ATAD",
     "diverted profits", "controlled foreign",
-    "related party", "intra-group", "intercompany",
     "tax dispute", "tax court", "tax ruling", "tax case",
     "thin capitalisation", "thin capitalization",
     "profit shifting", "base erosion",
@@ -58,6 +65,10 @@ TP_KEYWORDS = [
     "state aid", "tax avoidance",
 ]
  
+# Pillar Two intentionally excluded from intake filter:
+# GloBE / UTPR / STTR are minimum tax mechanics, not transfer pricing.
+# Pillar One / Amount B included: directly embeds arm's length methodology.
+ 
 LENSES = [
     "Intangibles & IP",
     "Business restructuring",
@@ -65,7 +76,7 @@ LENSES = [
     "PE & attribution",
     "AI & digital economy",
     "Court decisions",
-    "Pillar Two / GloBE",
+    "Pillar One & Amount B",
     "Dispute resolution / MAP",
     "Documentation & CbCR",
     "General TP",
@@ -478,3 +489,9 @@ def main():
 if __name__ == "__main__":
     main()
  
+
+
+
+
+
+
