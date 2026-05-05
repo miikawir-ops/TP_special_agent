@@ -262,7 +262,7 @@ def classify_with_gemini(items):
         log.error("GEMINI_API_KEY not set")
         sys.exit(1)
     genai.configure(api_key=GEMINI_API_KEY)
-    model    = genai.GenerativeModel("gemini-2.0-flash")
+    model    = genai.GenerativeModel("gemini-1.5-flash")
     enriched = []
     for i in range(0, len(items), 15):
         batch = items[i: i + 15]
@@ -336,7 +336,7 @@ def get_signal_of_day(items):
                 "lens": "General TP", "urgency": "low"}
     try:
         genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-1.5-flash")
         top   = sorted(items, key=lambda x: -x.get("importance", 0))[:10]
         payload = [{"title": it["title"], "source": it["source"],
                     "lens": it.get("lens",""), "importance": it.get("importance",2)}
@@ -478,7 +478,3 @@ def main():
 if __name__ == "__main__":
     main()
  
-
-
-
-
