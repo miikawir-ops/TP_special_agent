@@ -38,26 +38,33 @@ REPO_ROOT    = Path(__file__).parent.parent
 ARCHIVE_FILE = REPO_ROOT / "archive.json"
  
 TP_KEYWORDS = [
-    # Core transfer pricing
-    "transfer pricing", "transfer price",
+    # ── TIER 1 triggers — court, regulation, priority TP topics ──
+    # Court & regulatory signals
+    "tax court", "tax tribunal", "tax ruling", "court decision",
+    "tax case", "tax dispute", "judgment", "appellant",
+    "new regulation", "new guidance", "new legislation",
+    "OECD report", "consultation document",
+ 
+    # Priority TP topic keywords
+    "intangibles", "intangible property", "DEMPE",
+    "business restructuring", "supply chain restructur",
+    "control over risk", "assumption of risk",
+    "permanent establishment", "PE attribution", "dependent agent",
+    "valuation", "business valuation", "IP valuation",
     "arm's length", "arm's-length", "arms length",
+ 
+    # ── TIER 2 triggers — general TP relevance ──
+    "transfer pricing", "transfer price",
     "related party", "intra-group", "intercompany",
     "controlled transaction", "comparable",
- 
-    # Pillar One & Amount B — genuinely TP-relevant
     "pillar one", "pillar 1", "amount B", "amount A",
-    "reallocation of profits", "market jurisdiction",
- 
-    # OECD / international tax frameworks with TP dimension
+    "reallocation of profits",
     "BEPS", "OECD", "tax treaty", "double taxation",
-    "permanent establishment", "PE risk",
-    "intangibles", "DEMPE",
     "country-by-country", "CbCR", "CbC",
     "advance pricing", "APA",
     "mutual agreement", "MAP",
     "DAC6", "DAC7", "ATAD",
     "diverted profits", "controlled foreign",
-    "tax dispute", "tax court", "tax ruling", "tax case",
     "thin capitalisation", "thin capitalization",
     "profit shifting", "base erosion",
     "withholding tax", "royalt",
@@ -65,21 +72,22 @@ TP_KEYWORDS = [
     "state aid", "tax avoidance",
 ]
  
-# Pillar Two intentionally excluded from intake filter:
-# GloBE / UTPR / STTR are minimum tax mechanics, not transfer pricing.
-# Pillar One / Amount B included: directly embeds arm's length methodology.
+# ── Tier definitions used by Gemini importance scoring ────────────────────────
+# Tier 1 (importance 4-5): court decisions, new regulation, priority TP topics
+# Tier 2 (importance 2-3): policy, analysis, general TP updates
+# Tier 3 (importance 1):   background, tangential — goes to archive only
  
 LENSES = [
-    "Intangibles & IP",
-    "Business restructuring",
-    "Finance & treasury",
-    "PE & attribution",
-    "AI & digital economy",
-    "Court decisions",
-    "Pillar One & Amount B",
-    "Dispute resolution / MAP",
-    "Documentation & CbCR",
-    "General TP",
+    "Intangibles & IP",          # most watched — DEMPE, royalties, IP ownership
+    "Business restructuring",    # conversions, transfers, supply chain changes
+    "PE & attribution",          # permanent establishment, profit attribution
+    "Court decisions",           # rulings globally — most actionable intelligence
+    "Finance & treasury",        # intra-group loans, guarantees, cash pooling
+    "AI & digital economy",      # emerging TP issues for digital business
+    "Dispute resolution / MAP",  # APAs, MAPs, arbitration
+    "Amount B & nexus",          # Pillar One Amount B, simplified arm's length
+    "Documentation & CbCR",      # TP docs, master file, local file, CbC
+    "General TP",                # catch-all
 ]
  
 REGIONS = ["Global", "EU", "US", "APAC", "Nordic", "Other"]
@@ -250,22 +258,55 @@ def deduplicate(items):
  
 CLASSIFY_PROMPT = """You are a senior transfer pricing specialist and international tax lawyer.
  
-Enrich each item with:
-1. lens - which TP aspect (ONE of: {lenses})
-2. region - primary jurisdiction (ONE of: Global, EU, US, APAC, Nordic, Other)
-3. importance - 1 to 5:
-   5 = OECD final report, landmark court ruling, new Pillar Two legislation
-   4 = significant country guidance, major case decision, new treaty
-   3 = consultation document, policy update, notable case
-   2 = academic commentary, minor guidance, procedural update
-   1 = general news, background article
-4. ai_summary - 2 sentences, professional English
-5. discard - true only if genuinely not about TP or taxation
+Enrich each item. The importance score determines where it appears on the page.
  
-Return ONLY valid JSON:
+── IMPORTANCE SCORING (critical — follow exactly) ──────────────────────────────
+ 
+TIER 1 — importance 4 or 5 (shown prominently in main feed):
+  5 = Landmark: OECD final report/guidance, Supreme Court/highest court ruling,
+      new TP legislation enacted, landmark APA/MAP outcome
+  4 = Major: significant court/tribunal ruling on TP, new country TP regulation,
+      new tax treaty with TP implications, OECD consultation on TP topic,
+      any article whose PRIMARY subject is:
+        → intangibles / DEMPE / IP valuation
+        → business restructuring / supply chain changes
+        → PE & profit attribution / dependent agent
+        → control over risk / assumption of risk
+        → valuation of intra-group transactions
+        → arm's length methodology
+ 
+TIER 2 — importance 2 or 3 (shown in main feed, lower priority):
+  3 = Notable: policy update, consultation document, notable practitioner analysis
+      on TP topics, country guidance on documentation or reporting
+  2 = Update: academic commentary, minor regulatory update, procedural guidance
+ 
+TIER 3 — importance 1 (goes to archive only, never shown as a card):
+  1 = Background: general tax news tangentially mentioning TP, broad tax reform
+      articles where TP is not the primary subject
+ 
+── LENS ASSIGNMENT ─────────────────────────────────────────────────────────────
+Assign ONE lens (ONE of: {lenses}):
+  "Intangibles & IP"       → IP ownership, royalties, DEMPE, licensing, brand, software, IP valuation
+  "Business restructuring" → supply chain changes, function transfers, business model changes, exits
+  "PE & attribution"       → permanent establishment, profit attribution, nexus, dependent agent
+  "Court decisions"        → ANY ruling, judgment, tribunal decision, court case (use even if another lens also fits)
+  "Finance & treasury"     → intra-group loans, financial guarantees, cash pooling, financial transactions
+  "AI & digital economy"   → digital services, AI-related TP, platform economy, data as intangible
+  "Dispute resolution / MAP" → APAs, MAPs, arbitration, competent authority
+  "Amount B & nexus"       → Amount B simplified approach, baseline distribution, nexus rules
+  "Documentation & CbCR"  → TP documentation, master file, local file, CbC reporting, DAC6
+  "General TP"             → catch-all only if no other lens fits
+ 
+── OTHER FIELDS ────────────────────────────────────────────────────────────────
+region: ONE of: Global, EU, US, APAC, Nordic, Other
+ai_summary: 2 sentences. State specific facts (jurisdiction, company, amount if known).
+            Never write generic summaries like "this article discusses transfer pricing".
+discard: true ONLY if completely unrelated to TP or taxation.
+ 
+Return ONLY valid JSON — no markdown, no preamble:
 {{"items": [{{"id":"...","lens":"...","region":"...","importance":3,"ai_summary":"...","discard":false}}]}}
  
-Items:
+Items to classify:
 {items_json}"""
  
 def classify_with_gemini(items):
@@ -426,14 +467,21 @@ def check_accessibility(items):
 # ── Render ────────────────────────────────────────────────────────────────────
  
 def render_report(items, signal, archive, sparklines, region_counts):
+    # Sort by importance desc, then source
     items.sort(key=lambda x: (-x.get("importance",0), x.get("source","")))
-    items = items[:MAX_ITEMS]
+ 
+    # Tier gating: importance 1 = archive only, never shown as a card
+    main_items    = [it for it in items if it.get("importance", 1) >= 2][:MAX_ITEMS]
+    archive_only  = [it for it in items if it.get("importance", 1) < 2]
+    log.info(f"Main feed: {len(main_items)} items | Archive-only (tier 3): {len(archive_only)} items")
+ 
     by_lens = defaultdict(list)
-    for item in items:
+    for item in main_items:
         by_lens[item.get("lens","General TP")].append(item)
-    lens_order = sorted(by_lens.keys(),
-                        key=lambda l: -max(i.get("importance",0) for i in by_lens[l]))
-    high_importance_count = sum(1 for it in items if it.get("importance",0) >= 4)
+ 
+    # Order lenses by LENSES definition order (not just max importance)
+    lens_order = [l for l in LENSES if l in by_lens]
+    high_importance_count = sum(1 for it in main_items if it.get("importance",0) >= 4)
     now_helsinki  = datetime.now(HELSINKI)
     archive_by_day = build_archive_by_day(archive)
     today = now_helsinki.date()
@@ -455,7 +503,7 @@ def render_report(items, signal, archive, sparklines, region_counts):
     return env.get_template("report.html").render(
         generated_at          = now_helsinki.strftime("%A, %d %B %Y · %H:%M") + " " + now_helsinki.strftime("%Z"),
         generated_date        = now_helsinki.strftime("%Y-%m-%d"),
-        total_items           = len(items),
+        total_items           = len(main_items),
         high_importance_count = high_importance_count,
         by_lens               = by_lens,
         lens_order            = lens_order,
@@ -488,10 +536,3 @@ def main():
  
 if __name__ == "__main__":
     main()
- 
-
-
-
-
-
-

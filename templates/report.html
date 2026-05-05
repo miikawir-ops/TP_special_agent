@@ -201,7 +201,7 @@ footer a:hover{color:var(--accent);}
 <section class="hero">
   <p class="hero-label">Global transfer pricing intelligence</p>
   <h1>What moved in <em>transfer pricing</em><br>and international tax today</h1>
-  <p class="hero-sub">Daily briefing covering OECD, Pillar Two, court decisions and regulatory changes — filtered and classified by AI. All items relate to transfer pricing and taxation.</p>
+  <p class="hero-sub">Daily intelligence on <strong>intangibles</strong>, <strong>business restructuring</strong>, <strong>PE & attribution</strong>, <strong>control over risk</strong> and court decisions — filtered and classified by AI. All items relate to transfer pricing and international taxation.</p>
 </section>
 
 <!-- Stats — 4 equal columns -->
@@ -347,16 +347,21 @@ function filterLens(lens,btn){
 
 // Highlight TP keywords in card titles and archive titles
 const TP_KEYWORDS = [
-  'intangibles','intangible','business restructuring','restructuring',
-  'arm\'s length','arms length','control over risk','controlled transaction',
-  'related party','intra-group','intercompany',
-  'permanent establishment','transfer pricing','transfer price',
-  'pillar one','pillar 1','amount B','amount A','reallocation of profits',
+  // Priority — Tier 1 TP topics
+  'intangibles','intangible property','DEMPE',
+  'business restructuring','restructuring',
+  'arm\'s length','control over risk','assumption of risk',
+  'permanent establishment','PE attribution','dependent agent',
+  'valuation','IP valuation','business valuation',
+  'controlled transaction','related party','intra-group','intercompany',
+  'transfer pricing','transfer price',
+  // Secondary — Tier 2
+  'pillar one','amount B','amount A',
   'country-by-country','CbCR','advance pricing','APA',
   'mutual agreement','thin capitalisation','thin capitalization',
   'profit shifting','base erosion','diverted profits',
   'controlled foreign','state aid','tax avoidance',
-  'withholding tax','royalt','DAC6','DAC7','ATAD','DEMPE','BEPS',
+  'withholding tax','royalt','DAC6','DAC7','ATAD','BEPS',
 ];
 
 function highlightKeywords(el){
