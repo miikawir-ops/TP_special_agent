@@ -1,5 +1,21 @@
 [
   {
+    "id": "b107e9829182",
+    "title": "Digital Services Taxes in Europe, 2026",
+    "summary": "Currently, about half of all European OECD countries have either announced, proposed, or implemented a digital services tax. Because these taxes mainly impact US companies and are thus perceived as discriminatory, the US responded with retaliatory tariff threats.",
+    "url": "https://taxfoundation.org/data/all/eu/digital-services-taxes-europe/",
+    "source": "Tax Foundation",
+    "pub": "May 4, 2026 16:15:53 +0000",
+    "open": true,
+    "lens": "General TP",
+    "region": "Global",
+    "importance": 2,
+    "ai_summary": "Currently, about half of all European OECD countries have either announced, proposed, or implemented a digital services tax. Because these taxes mainly impact US companies and are thus perceived as discriminatory, the US responded with retaliatory tariff threats.",
+    "freshness": "13h ago",
+    "accessible": true,
+    "archive_date": "2026-05-05"
+  },
+  {
     "id": "5bedc7a58d5a",
     "title": "Delay in Filing Form 10 Cannot Alone Defeat Section 11(2) Exemption Claim: ITAT Visakhapatnam",
     "summary": "The Tribunal ruled that exemption under Section 11(2) should not be denied solely due to delayed filing of Form-10. It directed reconsideration where the form was available during assessment. The post Delay in Filing Form 10 Cannot Alone Defeat Section 11(2) Exemption Claim: ITAT Visakhapatnam appeared first on TaxGuru .",
@@ -13,7 +29,7 @@
     "ai_summary": "The Tribunal ruled that exemption under Section 11(2) should not be denied solely due to delayed filing of Form-10. It directed reconsideration where the form was available during assessment. The post Delay in Filing Form 10 Cannot Alone Defeat Section 11(2) Exemption Claim: ITAT Visakhapatnam appea",
     "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-05-04"
+    "archive_date": "2026-05-05"
   },
   {
     "id": "43efebb3195a",
@@ -27,9 +43,9 @@
     "region": "Global",
     "importance": 2,
     "ai_summary": "A detailed overview of updated TDS provisions mapping old and new sections, rates, and thresholds. Helps taxpayers understand compliance requirements across all payment categories. The post Complete TDS Rate Chart for FY 2026-27 with Section-Wise Breakdown appeared first on TaxGuru .",
-    "freshness": "3d ago",
+    "freshness": "4d ago",
     "accessible": true,
-    "archive_date": "2026-05-04"
+    "archive_date": "2026-05-05"
   },
   {
     "id": "5dd199999a68",
@@ -45,7 +61,7 @@
     "ai_summary": "ITAT Delhi held that companies owning and operating channels cannot be compared with distribution company for the purpose of transfer pricing. Accordingly, directs TPO to exclude such comparables for benchmarking distribution segment and determination of ALP. The post Channel owners cannot be taken ",
     "freshness": "4d ago",
     "accessible": true,
-    "archive_date": "2026-05-04"
+    "archive_date": "2026-05-05"
   },
   {
     "id": "972159d8e4ae",
@@ -61,7 +77,7 @@
     "ai_summary": "ITAT Mumbai held that payments made to third-party vendors on a cost-to-cost basis, without any value addition by the assessee, should be treated as pass-through costs and excluded from PLI computation. The post Pass-Through Costs Excluded From Transfer Pricing PLI as No Value Addition Was Performed",
     "freshness": "5d ago",
     "accessible": true,
-    "archive_date": "2026-05-04"
+    "archive_date": "2026-05-05"
   },
   {
     "id": "cdfc5e4c17b5",
@@ -77,7 +93,7 @@
     "ai_summary": "The Supreme Court affirmed that payments for cloud computing services are not royalty where no intellectual property rights are transferred. It held that mere access to services does not amount to use of equipment or technology under tax law. The post Cloud Service Payments Not Taxable as Royalty Du",
     "freshness": "5d ago",
     "accessible": true,
-    "archive_date": "2026-05-04"
+    "archive_date": "2026-05-05"
   },
   {
     "id": "0e183a4396fd",
@@ -93,6 +109,6 @@
     "ai_summary": "The Tribunal set aside the dismissal of a delayed appeal, holding that the issue of distribution fee taxability requires fresh examination on merits. The case was remanded to the Assessing Officer for reconsideration with proper hearing. The post Only Legitimate Tax Can Be Collected; ITAT Restores B",
     "freshness": "5d ago",
     "accessible": true,
-    "archive_date": "2026-05-04"
+    "archive_date": "2026-05-05"
   }
 ]
