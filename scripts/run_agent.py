@@ -93,45 +93,72 @@ LENSES = [
 REGIONS = ["Global", "EU", "US", "APAC", "Nordic", "Other"]
  
 RSS_FEEDS = [
-    # ✅ Confirmed working
-    {"name": "Tax Foundation",      "url": "https://taxfoundation.org/feed/",                                                          "open": True},
-    {"name": "Tax Justice Network", "url": "https://taxjustice.net/feed/",                                                             "open": True},
-    {"name": "EU Tax Observatory",  "url": "https://www.taxobservatory.eu/feed/",                                                      "open": True},
-    {"name": "TP Asia",             "url": "https://www.transferpricingasia.com/feed/",                                                "open": True},
-    {"name": "TaxGuru India",       "url": "https://taxguru.in/category/income-tax/feed/",                                            "open": True},
+    # ── Google News RSS — most reliable, always works, global coverage ──────────
+    # Google News generates RSS for any search query — perfectly filtered to TP
+    {
+        "name": "Google News — Transfer Pricing",
+        "url": "https://news.google.com/rss/search?q=%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — TP Court",
+        "url": "https://news.google.com/rss/search?q=%22transfer+pricing%22+court+ruling&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — Intangibles TP",
+        "url": "https://news.google.com/rss/search?q=%22transfer+pricing%22+intangibles&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — PE Attribution",
+        "url": "https://news.google.com/rss/search?q=%22permanent+establishment%22+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — OECD Tax",
+        "url": "https://news.google.com/rss/search?q=OECD+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
  
-    # MNE Tax — try atom feed
-    {"name": "MNE Tax",             "url": "https://mnetax.com/feed/atom/",                                                            "open": True},
- 
-    # Kluwer — try direct WordPress feed path
-    {"name": "Kluwer Tax Blog",     "url": "https://kluwertaxlawblog.com/?feed=rss2",                                                  "open": True},
- 
-    # Tax Foundation international tag — corrected slug
-    {"name": "Tax Fdn Global",      "url": "https://taxfoundation.org/tag/international/feed/",                                        "open": True},
- 
-    # Lexology — corrected RSS endpoint
-    {"name": "Lexology Tax",        "url": "https://www.lexology.com/rss/feeds/newcontent.ashx?topics=international-tax",              "open": True},
- 
-    # CJEU — corrected press release feed
-    {"name": "CJEU Press",          "url": "https://curia.europa.eu/jcms/upload/docs/application/rss/2019-03/cp_en.xml",               "open": True},
- 
-    # US Tax Court — try alternative path
-    {"name": "US Tax Court",        "url": "https://www.ustaxcourt.gov/sitemap/opinions.xml",                                          "open": True},
- 
-    # EUR-Lex — TP-specific query RSS
-    {"name": "EUR-Lex TP",          "url": "https://eur-lex.europa.eu/search.html?scope=EURLEX&text=transfer+pricing&lang=en&type=quick&rss=true", "open": True},
- 
-    # Global Tax News — WordPress-based TP news aggregator
-    {"name": "Global Tax News",     "url": "https://www.globaltaxnews.ey.com/feed",                                                    "open": True},
- 
-    # Tax Analysts (open headlines)
-    {"name": "Tax Analysts",        "url": "https://www.taxanalysts.org/feed",                                                         "open": True},
- 
-    # PwC Tax Policy — publishes TP alerts
-    {"name": "PwC Tax Policy",      "url": "https://www.pwc.com/gx/en/services/tax/tax-policy-bulletin/rss.xml",                       "open": True},
- 
-    # KPMG Tax News — international tax updates
-    {"name": "KPMG Tax",            "url": "https://home.kpmg/xx/en/home/insights/tax.rss.html",                                       "open": True},
+    # ── Specialist confirmed-working feeds ───────────────────────────────────────
+    {
+        "name": "Tax Foundation",
+        "url": "https://taxfoundation.org/feed/",
+        "open": True,
+    },
+    {
+        "name": "Tax Justice Network",
+        "url": "https://taxjustice.net/feed/",
+        "open": True,
+    },
+    {
+        "name": "EU Tax Observatory",
+        "url": "https://www.taxobservatory.eu/feed/",
+        "open": True,
+    },
+    {
+        "name": "TaxGuru India",
+        "url": "https://taxguru.in/category/income-tax/feed/",
+        "open": True,
+    },
+    {
+        "name": "TP Asia",
+        "url": "https://www.transferpricingasia.com/feed/",
+        "open": True,
+    },
+    # Transfer Pricing News — international TP & tax treaty news
+    {
+        "name": "TP News International",
+        "url": "https://transferpricingnews.com/feed/",
+        "open": True,
+    },
+    # MNE Tax — now owned by CrossBorder Solutions
+    {
+        "name": "MNE Tax",
+        "url": "https://mnetax.com/feed",
+        "open": True,
+    },
 ]
  
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -536,3 +563,10 @@ def main():
  
 if __name__ == "__main__":
     main()
+ 
+
+
+
+
+
+
