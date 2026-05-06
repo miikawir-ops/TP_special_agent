@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TP Special Agent — Wednesday, 06 May 2026 · 08:19 EEST</title>
+<title>TP Special Agent — Wednesday, 06 May 2026 · 08:24 EEST</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
 :root {
@@ -131,7 +131,11 @@ body::before{content:'';display:block;height:4px;background:linear-gradient(90de
 .card-link-btn:hover{color:var(--accent);}
 .card-link-btn svg{width:9px;height:9px;}
 
-/* ── Archive ── */
+/* ── Source breakdown ── */
+.source-bar{margin:0 0 1.75rem;animation:fade-in .5s ease .4s both;}
+.source-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;}
+.source-pill{font-size:11px;font-family:var(--font-mono);color:var(--text2);background:var(--bg2);border:1px solid var(--border2);padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:.4rem;}
+.source-count{background:var(--accent-dim);color:var(--accent);border-radius:10px;padding:1px 6px;font-weight:700;font-size:10px;}
 .archive-section{margin:2.5rem 0 0;padding-bottom:4rem;}
 .archive-title{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);font-weight:700;margin-bottom:1.25rem;padding-bottom:.7rem;border-bottom:3px solid var(--accent);display:inline-block;}
 .archive-day{margin-bottom:1.75rem;}
@@ -176,7 +180,7 @@ footer a:hover{color:var(--accent);}
     <span class="logo-text"><span class="logo-tp">TP</span> Special Agent</span>
   </div>
   <div class="topbar-right">
-    <span class="topbar-ts">Wednesday, 06 May 2026 · 08:19 EEST</span>
+    <span class="topbar-ts">Wednesday, 06 May 2026 · 08:24 EEST</span>
     <a class="sibling-link" href="https://miikawir-ops.github.io/AI_valuechain/ai_chain_report.html" target="_blank" rel="noopener">AI Valuechain Agent →</a>
   </div>
 </header>
@@ -224,17 +228,94 @@ footer a:hover{color:var(--accent);}
   </div>
 </div>
 
-<!-- Region heatmap -->
+<!-- Region heatmap — only show when 2+ regions active -->
 
-<div class="region-bar">
-  <p class="region-label">Regional activity today</p>
-  <div class="region-strips">
+
+
+<!-- Source breakdown — always shown -->
+
+<div class="source-bar">
+  <p class="region-label">Sources today</p>
+  <div class="source-pills">
     
-    <div class="region-strip">
-      <span class="region-num">13</span>
-      <div class="region-bar-fill" style="height:38px"></div>
-      <span class="region-name">Global</span>
-    </div>
+    
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+        
+        
+          
+        
+      
+    
+    
+    <span class="source-pill">Google News — OECD Tax <span class="source-count">1</span></span>
+    
+    <span class="source-pill">Google News — TP Court <span class="source-count">1</span></span>
+    
+    <span class="source-pill">Google News — Transfer Pricing <span class="source-count">2</span></span>
+    
+    <span class="source-pill">Tax Foundation <span class="source-count">1</span></span>
+    
+    <span class="source-pill">TaxGuru India <span class="source-count">8</span></span>
     
   </div>
 </div>
