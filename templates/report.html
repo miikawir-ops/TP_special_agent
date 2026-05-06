@@ -131,7 +131,11 @@ body::before{content:'';display:block;height:4px;background:linear-gradient(90de
 .card-link-btn:hover{color:var(--accent);}
 .card-link-btn svg{width:9px;height:9px;}
 
-/* ── Archive ── */
+/* ── Source breakdown ── */
+.source-bar{margin:0 0 1.75rem;animation:fade-in .5s ease .4s both;}
+.source-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;}
+.source-pill{font-size:11px;font-family:var(--font-mono);color:var(--text2);background:var(--bg2);border:1px solid var(--border2);padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:.4rem;}
+.source-count{background:var(--accent-dim);color:var(--accent);border-radius:10px;padding:1px 6px;font-weight:700;font-size:10px;}
 .archive-section{margin:2.5rem 0 0;padding-bottom:4rem;}
 .archive-title{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);font-weight:700;margin-bottom:1.25rem;padding-bottom:.7rem;border-bottom:3px solid var(--accent);display:inline-block;}
 .archive-day{margin-bottom:1.75rem;}
@@ -224,18 +228,42 @@ footer a:hover{color:var(--accent);}
   </div>
 </div>
 
-<!-- Region heatmap -->
-{% if region_counts %}
+<!-- Region heatmap — only show when 2+ regions active -->
+{% set active_regions = region_counts.items() | selectattr('1', 'gt', 0) | list %}
+{% if active_regions | length >= 2 %}
 <div class="region-bar">
   <p class="region-label">Regional activity today</p>
   <div class="region-strips">
-    {% for region, count in region_counts.items() %}{% if count > 0 %}
+    {% for region, count in active_regions %}
     <div class="region-strip">
       <span class="region-num">{{ count }}</span>
       <div class="region-bar-fill" style="height:{{ [5,(count/max_region*38)|int]|max }}px"></div>
       <span class="region-name">{{ region }}</span>
     </div>
-    {% endif %}{% endfor %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Source breakdown — always shown -->
+{% if lens_order or archive_by_day %}
+<div class="source-bar">
+  <p class="region-label">Sources today</p>
+  <div class="source-pills">
+    {% set ns = namespace(sources={}) %}
+    {% for lens, items in by_lens.items() %}
+      {% for item in items %}
+        {% set src = item.source %}
+        {% if src not in ns.sources %}
+          {% set _ = ns.sources.update({src: 1}) %}
+        {% else %}
+          {% set _ = ns.sources.update({src: ns.sources[src] + 1}) %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    {% for src, count in ns.sources.items() %}
+    <span class="source-pill">{{ src }} <span class="source-count">{{ count }}</span></span>
+    {% endfor %}
   </div>
 </div>
 {% endif %}
