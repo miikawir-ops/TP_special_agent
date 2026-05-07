@@ -29,13 +29,46 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("tp-agent")
  
 GEMINI_API_KEY  = os.environ.get("GEMINI_API_KEY", "")
-LOOKBACK_HOURS  = 168       # 7 days — ensures we always catch content
+LOOKBACK_HOURS  = 48        # 48h — keeps content fresh and current
 ARCHIVE_DAYS    = 7
 MAX_ITEMS       = 40
 REQUEST_TIMEOUT = 15
  
 REPO_ROOT    = Path(__file__).parent.parent
 ARCHIVE_FILE = REPO_ROOT / "archive.json"
+ 
+# ── Publisher domain → display name map ──────────────────────────────────────
+# Extracts real publisher from Google News aggregated items
+PUBLISHER_MAP = {
+    "bloombergtax.com":           "Bloomberg Tax",
+    "bloomberg.com":              "Bloomberg Tax",
+    "reuters.com":                "Reuters",
+    "ft.com":                     "Financial Times",
+    "law360.com":                 "Law360",
+    "taxnotes.com":               "Tax Notes",
+    "mnetax.com":                 "MNE Tax",
+    "internationaltaxreview.com": "Int'l Tax Review",
+    "taxfoundation.org":          "Tax Foundation",
+    "taxjustice.net":             "Tax Justice Network",
+    "oecd.org":                   "OECD",
+    "taxguru.in":                 "TaxGuru India",
+    "transferpricingasia.com":    "TP Asia",
+    "ibfd.org":                   "IBFD",
+    "pwc.com":                    "PwC Tax",
+    "deloitte.com":               "Deloitte Tax",
+    "ey.com":                     "EY Tax",
+    "kpmg.com":                   "KPMG Tax",
+    "taxobservatory.eu":          "EU Tax Observatory",
+    "eur-lex.europa.eu":          "EUR-Lex",
+    "curia.europa.eu":            "CJEU",
+    "ustaxcourt.gov":             "US Tax Court",
+    "polity.org.za":              "Polity (SA)",
+    "taxanalysts.org":            "Tax Analysts",
+    "kluwertaxlawblog.com":       "Kluwer Tax Blog",
+    "rödl.com":                   "RÖDL",
+    "roedl.com":                  "RÖDL",
+    "tpnews.ca":                  "TP News",
+}
  
 TP_KEYWORDS = [
     # ── TIER 1 triggers — court, regulation, priority TP topics ──
@@ -147,21 +180,80 @@ RSS_FEEDS = [
         "url": "https://www.transferpricingasia.com/feed/",
         "open": True,
     },
-    # Transfer Pricing News — international TP & tax treaty news
-    {
-        "name": "TP News International",
-        "url": "https://transferpricingnews.com/feed/",
-        "open": True,
-    },
-    # MNE Tax — now owned by CrossBorder Solutions
     {
         "name": "MNE Tax",
         "url": "https://mnetax.com/feed",
         "open": True,
     },
+ 
+    # ── Big Four Google News feeds ────────────────────────────────────────────
+    {
+        "name": "Google News — KPMG TP",
+        "url": "https://news.google.com/rss/search?q=KPMG+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — PwC TP",
+        "url": "https://news.google.com/rss/search?q=PwC+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — Deloitte TP",
+        "url": "https://news.google.com/rss/search?q=Deloitte+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — EY TP",
+        "url": "https://news.google.com/rss/search?q=%22Ernst+Young%22+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+ 
+    # ── EY BorderCrossings TP podcast ─────────────────────────────────────────
+    {
+        "name": "EY BorderCrossings Podcast",
+        "url": "https://feeds.libsyn.com/507593/rss",
+        "open": True,
+    },
 ]
  
 # ── Helpers ───────────────────────────────────────────────────────────────────
+ 
+def extract_publisher(title: str, url: str, feed_name: str, entry=None) -> str:
+    """
+    Extract real publisher from Google News aggregated items.
+    Google News titles end with ' - publisher.domain.com' or ' - Publisher Name'.
+    feedparser also provides entry.source.title for some feeds.
+    """
+    # 1. Try feedparser source tag (most reliable when present)
+    if entry is not None:
+        src = getattr(entry, "source", None)
+        if src:
+            src_title = getattr(src, "title", "")
+            if src_title and len(src_title) < 60:
+                return src_title
+ 
+    # 2. Parse ' - something' suffix from Google News title
+    if " - " in title:
+        suffix = title.rsplit(" - ", 1)[-1].strip()
+        # Could be a domain (news.bloombergtax.com) or publisher name
+        # Check domain map first
+        for domain, name in PUBLISHER_MAP.items():
+            if domain in suffix.lower():
+                return name
+        # If it looks like a clean publisher name (not a URL)
+        if 2 < len(suffix) < 50 and "." not in suffix and suffix[0].isupper():
+            return suffix
+ 
+    # 3. Match URL domain against known publishers
+    for domain, name in PUBLISHER_MAP.items():
+        if domain in url.lower():
+            return name
+ 
+    # 4. Clean up feed name
+    if feed_name.startswith("Google News — "):
+        return feed_name.replace("Google News — ", "GN: ")
+ 
+    return feed_name
  
 def item_id(url):
     return hashlib.md5(url.encode()).hexdigest()[:12]
@@ -257,12 +349,22 @@ def fetch_rss_items():
                 if not tp:
                     log.debug(f"  SKIP non-TP: {title[:60]}")
                     continue
+                # Extract real publisher (especially for Google News aggregated items)
+                publisher = extract_publisher(title, link, feed_cfg["name"], entry)
+                # Clean title: remove domain suffix added by Google News
+                # e.g. "Italy TP Case - news.bloombergtax.com" → "Italy TP Case"
+                clean_title = title
+                if " - " in title:
+                    suffix = title.rsplit(" - ", 1)[-1].strip()
+                    # Remove if suffix looks like a domain or known publisher
+                    if "." in suffix or any(d in suffix.lower() for d in PUBLISHER_MAP):
+                        clean_title = title.rsplit(" - ", 1)[0].strip()
                 items.append({
                     "id":      item_id(link),
-                    "title":   title,
+                    "title":   clean_title,
                     "summary": BeautifulSoup(summary, "lxml").get_text(" ", strip=True)[:600],
                     "url":     link,
-                    "source":  feed_cfg["name"],
+                    "source":  publisher,
                     "pub":     pub_str,
                     "open":    feed_cfg["open"],
                 })
@@ -341,7 +443,7 @@ def classify_with_gemini(items):
         log.error("GEMINI_API_KEY not set")
         sys.exit(1)
     genai.configure(api_key=GEMINI_API_KEY)
-    model    = genai.GenerativeModel("gemini-1.5-flash")
+    model    = genai.GenerativeModel("gemini-2.5-flash")
     enriched = []
     for i in range(0, len(items), 15):
         batch = items[i: i + 15]
@@ -415,7 +517,7 @@ def get_signal_of_day(items):
                 "lens": "General TP", "urgency": "low"}
     try:
         genai.configure(api_key=GEMINI_API_KEY)
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-2.5-flash")
         top   = sorted(items, key=lambda x: -x.get("importance", 0))[:10]
         payload = [{"title": it["title"], "source": it["source"],
                     "lens": it.get("lens",""), "importance": it.get("importance",2)}
@@ -564,9 +666,3 @@ def main():
 if __name__ == "__main__":
     main()
  
-
-
-
-
-
-
