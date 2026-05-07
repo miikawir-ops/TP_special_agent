@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TP Special Agent — Thursday, 07 May 2026 · 08:27 EEST</title>
+<title>TP Special Agent — Thursday, 07 May 2026 · 08:47 EEST</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
 :root {
@@ -225,7 +225,7 @@ footer a:hover{color:var(--accent);}
     <span class="logo-text"><span class="logo-tp">TP</span> Special Agent</span>
   </div>
   <div class="topbar-right">
-    <span class="topbar-ts">Thursday, 07 May 2026 · 08:27 EEST</span>
+    <span class="topbar-ts">Thursday, 07 May 2026 · 08:47 EEST</span>
     <a class="sibling-link" href="https://miikawir-ops.github.io/AI_valuechain/ai_chain_report.html" target="_blank" rel="noopener">AI Valuechain Agent →</a>
   </div>
 </header>
@@ -234,14 +234,14 @@ footer a:hover{color:var(--accent);}
 
 <!-- Signal of the Day -->
 <div class="signal-wrap">
-  <div class="signal-card urgency-low">
+  <div class="signal-card urgency-high">
     <p class="signal-label">TP Signal of the Day</p>
-    <h2 class="signal-headline">TP intelligence gathered — see items below</h2>
-    <p class="signal-body">Signal analysis unavailable. Items are classified below.</p>
+    <h2 class="signal-headline">Italy&#39;s Top Court Prioritizes Economics in Landmark GE TP Case.</h2>
+    <p class="signal-body">The Italian Supreme Court&#39;s decision to re-examine the GE transfer pricing case, focusing on the economic substance of transactions, signals a global trend towards robust, fact-based TP analyses. This reinforces that companies must prioritize comprehensive functional, risk, and economic analyses to underpin their transfer pricing documentation and withstand increased scrutiny.</p>
     <div class="signal-meta">
-      <div class="urgency-dot low"></div>
-      <span class="signal-lens">General TP</span>
-      <span style="font-size:11px;color:var(--text3);font-family:var(--font-mono)">low urgency</span>
+      <div class="urgency-dot high"></div>
+      <span class="signal-lens">Court decisions</span>
+      <span style="font-size:11px;color:var(--text3);font-family:var(--font-mono)">high urgency</span>
     </div>
   </div>
 </div>
@@ -257,15 +257,15 @@ footer a:hover{color:var(--accent);}
 <div class="stats-row">
   <div class="stat-card">
     <p class="stat-label">Items today</p>
-    <p class="stat-val accent">13</p>
+    <p class="stat-val accent">5</p>
   </div>
   <div class="stat-card">
     <p class="stat-label">Lenses active</p>
-    <p class="stat-val">1</p>
+    <p class="stat-val">2</p>
   </div>
   <div class="stat-card">
     <p class="stat-label">Landmark / Major</p>
-    <p class="stat-val">0</p>
+    <p class="stat-val">3</p>
   </div>
   <div class="stat-card">
     <p class="stat-label">Updated</p>
@@ -275,6 +275,31 @@ footer a:hover{color:var(--accent);}
 
 <!-- Region heatmap — only show when 2+ regions active -->
 
+
+<div class="region-bar">
+  <p class="region-label">Regional activity today</p>
+  <div class="region-strips">
+    
+    <div class="region-strip">
+      <span class="region-num">1</span>
+      <div class="region-bar-fill" style="height:6px"></div>
+      <span class="region-name">Global</span>
+    </div>
+    
+    <div class="region-strip">
+      <span class="region-num">1</span>
+      <div class="region-bar-fill" style="height:6px"></div>
+      <span class="region-name">EU</span>
+    </div>
+    
+    <div class="region-strip">
+      <span class="region-num">6</span>
+      <div class="region-bar-fill" style="height:38px"></div>
+      <span class="region-name">APAC</span>
+    </div>
+    
+  </div>
+</div>
 
 
 <!-- Source breakdown — always shown -->
@@ -300,45 +325,7 @@ footer a:hover{color:var(--accent);}
           
         
       
-        
-        
-          
-        
-      
-        
-        
-          
-        
-      
-        
-        
-          
-        
-      
-        
-        
-          
-        
-      
-        
-        
-          
-        
-      
-        
-        
-          
-        
-      
-        
-        
-          
-        
-      
-        
-        
-          
-        
+    
       
         
         
@@ -352,13 +339,13 @@ footer a:hover{color:var(--accent);}
       
     
     
-    <span class="source-pill">Google News — TP Court <span class="source-count">2</span></span>
+    <span class="source-pill">news.bloombergtax.com <span class="source-count">1</span></span>
     
-    <span class="source-pill">Google News — Transfer Pricing <span class="source-count">2</span></span>
+    <span class="source-pill">TaxGuru India <span class="source-count">2</span></span>
     
-    <span class="source-pill">Tax Foundation <span class="source-count">1</span></span>
+    <span class="source-pill">Deloitte <span class="source-count">1</span></span>
     
-    <span class="source-pill">TaxGuru India <span class="source-count">8</span></span>
+    <span class="source-pill">scanx.trade <span class="source-count">1</span></span>
     
   </div>
 </div>
@@ -369,6 +356,8 @@ footer a:hover{color:var(--accent);}
   <span class="filter-label">Lens:</span>
   <button class="filter-btn active" onclick="filterLens('all',this)">All</button>
   
+  <button class="filter-btn" onclick="filterLens('court-decisions',this)">Court decisions</button>
+  
   <button class="filter-btn" onclick="filterLens('general-tp',this)">General TP</button>
   
 </div>
@@ -376,6 +365,112 @@ footer a:hover{color:var(--accent);}
 <!-- Today's items -->
 <main>
   
+    
+    
+    
+    
+    <section class="lens-section" data-lens="court-decisions">
+      <div class="lens-header">
+        <div class="lens-dot"></div>
+        <span class="lens-title">Court decisions</span>
+        <div class="sparkline" title="7-day activity">
+          
+          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
+          
+          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
+          
+          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
+          
+          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
+          
+          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
+          
+          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
+          
+          <div class="spark-bar" style="height:16px;opacity:0.85"></div>
+          
+        </div>
+        <span class="lens-count">3 items</span>
+      </div>
+      <div class="card-grid">
+        
+        
+        
+        <article class="news-card imp-5" style="animation-delay:0.0s">
+          <div class="card-meta">
+            <span class="badge badge-source">news.bloombergtax.com</span>
+            <span class="badge badge-imp-5">Landmark</span>
+            <span class="badge badge-court">⚖ Court</span>
+            <span class="badge badge-region">EU</span>
+          </div>
+          <div class="card-title">
+            <span class="court-icon">⚖</span>
+            <a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPTHFvOGZhS1JPTTlqZzFwcmwyVG5PNWM4WDZJc0RLaFJGWXNJek80cGtaN1d5X1VjTVNJVFZ4eWRuZ2RvZ05TNGpCeUloNVVoSzA0TzJCQUZiUWJrSmxUaklkeGdZUVVGVk9RV3BTWHpEWTM1a1l0cU14UEVyMFlVN3RCQUp1ZXlnR3RvNC1rUk5YWWtGLXNpU0ltYWcyYTB1Szk0NTJaY0NwXzZKcG5OR0o4eVN3WjRaU09KNC02dTZqdw?oc=5" target="_blank" rel="noopener">Italy’s Top Court Looks at Economics in GE Transfer Pricing Case</a>
+            
+          </div>
+          <p class="card-summary">Italy&#39;s top court is currently reviewing a significant transfer pricing case involving General Electric, with a specific focus on the underlying economic analysis. This landmark judicial review could establish crucial precedents for transfer pricing methodologies and the interpretation of economic principles in Italian tax disputes.</p>
+          <div class="card-footer">
+            
+            <span class="card-fresh">21h ago</span>
+            
+            
+            <a class="card-link-btn" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPTHFvOGZhS1JPTTlqZzFwcmwyVG5PNWM4WDZJc0RLaFJGWXNJek80cGtaN1d5X1VjTVNJVFZ4eWRuZ2RvZ05TNGpCeUloNVVoSzA0TzJCQUZiUWJrSmxUaklkeGdZUVVGVk9RV3BTWHpEWTM1a1l0cU14UEVyMFlVN3RCQUp1ZXlnR3RvNC1rUk5YWWtGLXNpU0ltYWcyYTB1Szk0NTJaY0NwXzZKcG5OR0o4eVN3WjRaU09KNC02dTZqdw?oc=5" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
+            
+          </div>
+        </article>
+        
+        
+        
+        <article class="news-card imp-4" style="animation-delay:0.05s">
+          <div class="card-meta">
+            <span class="badge badge-source">TaxGuru India</span>
+            <span class="badge badge-imp-4">Major</span>
+            <span class="badge badge-court">⚖ Court</span>
+            <span class="badge badge-region">APAC</span>
+          </div>
+          <div class="card-title">
+            <span class="court-icon">⚖</span>
+            <a href="https://taxguru.in/income-tax/itat-chennai-allowed-section-80-ia-deduction-consumer-tariff-held-correct-benchmark.html" target="_blank" rel="noopener">ITAT Chennai Allowed Section 80-IA Deduction as Consumer Tariff Held Correct Benchmark</a>
+            
+          </div>
+          <p class="card-summary">The ITAT Chennai has ruled that transfer pricing adjustments for captive consumption should correctly use consumer tariff rates as a benchmark, rejecting the use of SEB sale rates. This significant decision clarifies benchmarking methodology for intra-group transactions and allowed a Section 80-IA deduction.</p>
+          <div class="card-footer">
+            
+            <span class="card-fresh">1d ago</span>
+            
+            
+            <a class="card-link-btn" href="https://taxguru.in/income-tax/itat-chennai-allowed-section-80-ia-deduction-consumer-tariff-held-correct-benchmark.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
+            
+          </div>
+        </article>
+        
+        
+        
+        <article class="news-card imp-4" style="animation-delay:0.1s">
+          <div class="card-meta">
+            <span class="badge badge-source">TaxGuru India</span>
+            <span class="badge badge-imp-4">Major</span>
+            <span class="badge badge-court">⚖ Court</span>
+            <span class="badge badge-region">APAC</span>
+          </div>
+          <div class="card-title">
+            <span class="court-icon">⚖</span>
+            <a href="https://taxguru.in/income-tax/tp-adjustments-reworked-itat-strikes-wrong-comparables-demands-parity-scientific-analysis.html" target="_blank" rel="noopener">TP Adjustments Reworked – ITAT Strikes Down Wrong Comparables, Demands Parity &amp; Scientific Analysis</a>
+            
+          </div>
+          <p class="card-summary">An ITAT ruling on transfer pricing adjustments emphasized that comparables must meet uniform filters and that FAR analysis should prevail over simple search matrices. The decision also provided guidance on ESOP adjustments, scientific computation for working capital, and the application of LIBOR-based interest for delayed receivables in intra-group transactions.</p>
+          <div class="card-footer">
+            
+            <span class="card-fresh">1d ago</span>
+            
+            
+            <a class="card-link-btn" href="https://taxguru.in/income-tax/tp-adjustments-reworked-itat-strikes-wrong-comparables-demands-parity-scientific-analysis.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
+            
+          </div>
+        </article>
+        
+      </div>
+    </section>
     
     
     
@@ -394,338 +489,63 @@ footer a:hover{color:var(--accent);}
           
           <div class="spark-bar" style="height:2px;opacity:0.20"></div>
           
-          <div class="spark-bar" style="height:6px;opacity:0.45"></div>
+          <div class="spark-bar" style="height:8px;opacity:0.56"></div>
           
-          <div class="spark-bar" style="height:3px;opacity:0.35"></div>
+          <div class="spark-bar" style="height:5px;opacity:0.42"></div>
           
           <div class="spark-bar" style="height:16px;opacity:0.85"></div>
           
         </div>
-        <span class="lens-count">13 items</span>
+        <span class="lens-count">2 items</span>
       </div>
       <div class="card-grid">
         
         
         
-        <article class="news-card imp-2" style="animation-delay:0.0s">
+        <article class="news-card imp-3" style="animation-delay:0.0s">
           <div class="card-meta">
-            <span class="badge badge-source">Google News — TP Court</span>
-            <span class="badge badge-imp-2">Update</span>
+            <span class="badge badge-source">Deloitte</span>
+            <span class="badge badge-imp-3">Notable</span>
             
             
           </div>
           <div class="card-title">
             
-            <a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPTHFvOGZhS1JPTTlqZzFwcmwyVG5PNWM4WDZJc0RLaFJGWXNJek80cGtaN1d5X1VjTVNJVFZ4eWRuZ2RvZ05TNGpCeUloNVVoSzA0TzJCQUZiUWJrSmxUaklkeGdZUVVGVk9RV3BTWHpEWTM1a1l0cU14UEVyMFlVN3RCQUp1ZXlnR3RvNC1rUk5YWWtGLXNpU0ltYWcyYTB1Szk0NTJaY0NwXzZKcG5OR0o4eVN3WjRaU09KNC02dTZqdw?oc=5" target="_blank" rel="noopener">Italy’s Top Court Looks at Economics in GE Transfer Pricing Case - news.bloombergtax.com</a>
+            <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE5QZ2ZXMTNSQTBuTnR6YVJQa0lBUk9RMUd3MUdkeFplRmMzcDVJbkJkVG1zYzF2ZXN5YzZsek1Ed1NhLUhJdzcxakxRRF9mWjVTZm43T21vN1RQRzBKaTk4U1p2OC10bjJQcWN1UTdUSzZsN2xMVGNnQlZ3?oc=5" target="_blank" rel="noopener">Deloitte Transfer Pricing Talks 2026 - Deloitte</a>
             
           </div>
-          <p class="card-summary">Italy’s Top Court Looks at Economics in GE Transfer Pricing Case news.bloombergtax.com</p>
+          <p class="card-summary">Deloitte is organizing its &#39;Transfer Pricing Talks 2026&#39; event, signaling ongoing engagement and thought leadership in the field. This practitioner-led initiative likely aims to disseminate insights and facilitate discussions on current and emerging transfer pricing topics.</p>
           <div class="card-footer">
             
-            <span class="card-fresh">20h ago</span>
+            <span class="card-fresh">14h ago</span>
             
             
-            <a class="card-link-btn" href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPTHFvOGZhS1JPTTlqZzFwcmwyVG5PNWM4WDZJc0RLaFJGWXNJek80cGtaN1d5X1VjTVNJVFZ4eWRuZ2RvZ05TNGpCeUloNVVoSzA0TzJCQUZiUWJrSmxUaklkeGdZUVVGVk9RV3BTWHpEWTM1a1l0cU14UEVyMFlVN3RCQUp1ZXlnR3RvNC1rUk5YWWtGLXNpU0ltYWcyYTB1Szk0NTJaY0NwXzZKcG5OR0o4eVN3WjRaU09KNC02dTZqdw?oc=5" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
+            <a class="card-link-btn" href="https://news.google.com/rss/articles/CBMiekFVX3lxTE5QZ2ZXMTNSQTBuTnR6YVJQa0lBUk9RMUd3MUdkeFplRmMzcDVJbkJkVG1zYzF2ZXN5YzZsek1Ed1NhLUhJdzcxakxRRF9mWjVTZm43T21vN1RQRzBKaTk4U1p2OC10bjJQcWN1UTdUSzZsN2xMVGNnQlZ3?oc=5" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
             
           </div>
         </article>
         
         
         
-        <article class="news-card imp-2" style="animation-delay:0.05s">
+        <article class="news-card imp-3" style="animation-delay:0.05s">
           <div class="card-meta">
-            <span class="badge badge-source">Google News — TP Court</span>
-            <span class="badge badge-imp-2">Update</span>
+            <span class="badge badge-source">scanx.trade</span>
+            <span class="badge badge-imp-3">Notable</span>
             
-            
+            <span class="badge badge-region">APAC</span>
           </div>
           <div class="card-title">
             
-            <a href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNSTBIeXhfelhLa1h4S3FoaV9Tc2VWdGhMVTBDVWp0Z2J3aXVZdXNVVlJLY3lyWTJDY1lrRWlIOWM5YzVZN3pZU3htYjFLNkU2eThHNHRZVkRwQW9FWnNqdXB4ZG02dXZ2RVdBYkwwcS1qaEZhaGRzckZ2cU0wa0VUaFVMZ3NyOERUUzdocjF0NndzV2Njdlc4UTQyX2JEZ3hPVTRScE8zZzh5NmdMMTcyUnoyU1RPaWFpOFB0b25nWWFDazVjN2F2aEk5RVBJYnRQbFVwdXJqN09kSHlUd1NwRXJnNlVxMHlKRFdr?oc=5" target="_blank" rel="noopener">Sars shut down in high-stakes transfer pricing battle: Court draws a hard line on “changing the case” mid-dispute - Polity.org.za</a>
+            <a href="https://news.google.com/rss/articles/CBMihAJBVV95cUxPbmh0bHhQeDFuV1dJVU1LMDdtaGtSQnM3bXFFVkpZenNuaGFUVy1MTVdmWXlVSVZtU04xRkh5UGVvZ2lDT2hqTDVzV3czTE5tb1Rwa21pMzFUejZ4aVBhS2hqZFNIT1E4eEZGcC1ya18yOHNyczVzSVVRdWk5dVB4aWJvdnJyNmNmX01RdVJpWW0ycEQ2Z2tRYU9MR01aemRmTE1CXzdGMzA2SVR3cnBXQjFRWUFnVUFxSFRsT1dEOFpmOGxidExqSzVSOG1fRFRTbWg1bFJERUZLY3NTRkN0d0hlTi16MTdPZXBidzdQbjM4XzJndGtCbWpNd1lOWGtGeW9jUw?oc=5" target="_blank" rel="noopener">Nucleus Software Exports Receives Income Tax Demand of INR 28,33,460/- for AY 2023-24 Over Transfer Pricing Adjustments</a>
             
           </div>
-          <p class="card-summary">Sars shut down in high-stakes transfer pricing battle: Court draws a hard line on “changing the case” mid-dispute Polity.org.za</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">6d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://news.google.com/rss/articles/CBMi6wFBVV95cUxNSTBIeXhfelhLa1h4S3FoaV9Tc2VWdGhMVTBDVWp0Z2J3aXVZdXNVVlJLY3lyWTJDY1lrRWlIOWM5YzVZN3pZU3htYjFLNkU2eThHNHRZVkRwQW9FWnNqdXB4ZG02dXZ2RVdBYkwwcS1qaEZhaGRzckZ2cU0wa0VUaFVMZ3NyOERUUzdocjF0NndzV2Njdlc4UTQyX2JEZ3hPVTRScE8zZzh5NmdMMTcyUnoyU1RPaWFpOFB0b25nWWFDazVjN2F2aEk5RVBJYnRQbFVwdXJqN09kSHlUd1NwRXJnNlVxMHlKRFdr?oc=5" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.1s">
-          <div class="card-meta">
-            <span class="badge badge-source">Google News — Transfer Pricing</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5adktZZXZOWmRGYkZTX3A1dmxxaXA3MXNDWm9wN3dXcFBUdmh0VUZxekVTejIxM3R6Mmt0dHhCWHZLVkx6amNkaUhVY1Z1NXEzaWd5V2swWFY1UTh1MWpqT0taUmFOVGZVdkJnY0tWb1llRWxPX0E?oc=5" target="_blank" rel="noopener">Transfer Pricing Updates - RÖDL</a>
-            
-          </div>
-          <p class="card-summary">Transfer Pricing Updates RÖDL</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">6d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5adktZZXZOWmRGYkZTX3A1dmxxaXA3MXNDWm9wN3dXcFBUdmh0VUZxekVTejIxM3R6Mmt0dHhCWHZLVkx6amNkaUhVY1Z1NXEzaWd5V2swWFY1UTh1MWpqT0taUmFOVGZVdkJnY0tWb1llRWxPX0E?oc=5" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.15000000000000002s">
-          <div class="card-meta">
-            <span class="badge badge-source">Google News — Transfer Pricing</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://news.google.com/rss/articles/CBMihAJBVV95cUxPbmh0bHhQeDFuV1dJVU1LMDdtaGtSQnM3bXFFVkpZenNuaGFUVy1MTVdmWXlVSVZtU04xRkh5UGVvZ2lDT2hqTDVzV3czTE5tb1Rwa21pMzFUejZ4aVBhS2hqZFNIT1E4eEZGcC1ya18yOHNyczVzSVVRdWk5dVB4aWJvdnJyNmNmX01RdVJpWW0ycEQ2Z2tRYU9MR01aemRmTE1CXzdGMzA2SVR3cnBXQjFRWUFnVUFxSFRsT1dEOFpmOGxidExqSzVSOG1fRFRTbWg1bFJERUZLY3NTRkN0d0hlTi16MTdPZXBidzdQbjM4XzJndGtCbWpNd1lOWGtGeW9jUw?oc=5" target="_blank" rel="noopener">Nucleus Software Exports Receives Income Tax Demand of INR 28,33,460/- for AY 2023-24 Over Transfer Pricing Adjustments - scanx.trade</a>
-            
-          </div>
-          <p class="card-summary">Nucleus Software Exports Receives Income Tax Demand of INR 28,33,460/- for AY 2023-24 Over Transfer Pricing Adjustments scanx.trade</p>
+          <p class="card-summary">Nucleus Software Exports has received an income tax demand of INR 28,33,460 for Assessment Year 2023-24. This demand stems from transfer pricing adjustments made by the Indian tax authorities, indicating a specific enforcement action.</p>
           <div class="card-footer">
             
             <span class="card-fresh">19h ago</span>
             
             
             <a class="card-link-btn" href="https://news.google.com/rss/articles/CBMihAJBVV95cUxPbmh0bHhQeDFuV1dJVU1LMDdtaGtSQnM3bXFFVkpZenNuaGFUVy1MTVdmWXlVSVZtU04xRkh5UGVvZ2lDT2hqTDVzV3czTE5tb1Rwa21pMzFUejZ4aVBhS2hqZFNIT1E4eEZGcC1ya18yOHNyczVzSVVRdWk5dVB4aWJvdnJyNmNmX01RdVJpWW0ycEQ2Z2tRYU9MR01aemRmTE1CXzdGMzA2SVR3cnBXQjFRWUFnVUFxSFRsT1dEOFpmOGxidExqSzVSOG1fRFRTbWg1bFJERUZLY3NTRkN0d0hlTi16MTdPZXBidzdQbjM4XzJndGtCbWpNd1lOWGtGeW9jUw?oc=5" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.2s">
-          <div class="card-meta">
-            <span class="badge badge-source">Tax Foundation</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxfoundation.org/data/all/eu/digital-services-taxes-europe/" target="_blank" rel="noopener">Digital Services Taxes in Europe, 2026</a>
-            
-          </div>
-          <p class="card-summary">Currently, about half of all European OECD countries have either announced, proposed, or implemented a digital services tax. Because these taxes mainly impact US companies and are thus perceived as discriminatory, the US responded with retaliatory tariff threats.</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">2d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxfoundation.org/data/all/eu/digital-services-taxes-europe/" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.25s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/itat-chennai-allowed-section-80-ia-deduction-consumer-tariff-held-correct-benchmark.html" target="_blank" rel="noopener">ITAT Chennai Allowed Section 80-IA Deduction as Consumer Tariff Held Correct Benchmark</a>
-            
-          </div>
-          <p class="card-summary">The Tribunal found that the transfer pricing adjustment was incorrectly computed using SEB sale rates. It allowed deduction based on consumer tariff rates. The decision clarifies benchmarking for captive consumption. The post ITAT Chennai Allowed Section 80-IA Deduction as Consumer Tariff Held Corre</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">1d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/itat-chennai-allowed-section-80-ia-deduction-consumer-tariff-held-correct-benchmark.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.30000000000000004s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/section-2711c-penalty-imposed-valuation-differences-proof-inaccuracy-sc.html" target="_blank" rel="noopener">Section 271(1)(c) Penalty Cannot Be Imposed for Valuation Differences Without Proof of Inaccuracy: SC</a>
-            
-          </div>
-          <p class="card-summary">The Supreme Court held that mere differences in property valuation do not amount to furnishing inaccurate particulars. Penalty under Section 271(1)(c) requires proof of deliberate inaccuracy. The ruling clarifies that estimation disputes alone cannot justify penalty. The post Section 271(1)(c) Penal</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">1d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/section-2711c-penalty-imposed-valuation-differences-proof-inaccuracy-sc.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.35000000000000003s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/income-tax-madras-hc-orders-fresh-review-due-remand-report-evidence.html" target="_blank" rel="noopener">Income Tax: Madras HC Orders Fresh Review Due to Ignored Remand Report Evidence</a>
-            
-          </div>
-          <p class="card-summary">The Court held that failure to consider a remand report acknowledging agricultural income constituted an apparent error, leading to recall of the earlier judgment and remand for fresh adjudication. The post Income Tax: Madras HC Orders Fresh Review Due to Ignored Remand Report Evidence appeared firs</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">1d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/income-tax-madras-hc-orders-fresh-review-due-remand-report-evidence.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.4s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/tp-adjustments-reworked-itat-strikes-wrong-comparables-demands-parity-scientific-analysis.html" target="_blank" rel="noopener">TP Adjustments Reworked – ITAT Strikes Down Wrong Comparables, Demands Parity &amp; Scientific Analysis</a>
-            
-          </div>
-          <p class="card-summary">TP ruling clarifies that comparables must meet uniform filters, FAR analysis prevails over search matrix, ESOP adjustments require parity, working capital needs scientific computation, and delayed receivables attract LIBOR-based interest. The post TP Adjustments Reworked – ITAT Strikes Down Wrong Co</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">1d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/tp-adjustments-reworked-itat-strikes-wrong-comparables-demands-parity-scientific-analysis.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.45s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/direct-tax-collections-f-y2025-26-31-03-2026.html" target="_blank" rel="noopener">Direct Tax Collections for F.Y. 2025-26 as on 31.03.2026</a>
-            
-          </div>
-          <p class="card-summary">The data shows a steady increase in net direct tax collections driven by higher corporate and non-corporate tax revenues. It highlights improved tax realization and efficient revenue administration. The post Direct Tax Collections for F.Y. 2025-26 as on 31.03.2026 appeared first on TaxGuru .</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">1d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/direct-tax-collections-f-y2025-26-31-03-2026.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.5s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/routine-bpo-comparable-excluded-functional-difference-reason-year-comparable-considered-quarterly-data-basis.html" target="_blank" rel="noopener">Routine BPO Comparable Excluded for Functional Difference Reason; Different Year Comparable Considered on Quarterly Data Basis</a>
-            
-          </div>
-          <p class="card-summary">The Tribunal held that a company engaged in high-end KPO and business solutions could not be compared with a routine captive BPO service provider. It also ruled that a comparable cannot be rejected solely for following a different financial year if reliable quarterly data is available. The post Rout</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">2d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/routine-bpo-comparable-excluded-functional-difference-reason-year-comparable-considered-quarterly-data-basis.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.55s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/delay-filing-form-10-defeat-section-112-exemption-claim-itat-visakhapatnam.html" target="_blank" rel="noopener">Delay in Filing Form 10 Cannot Alone Defeat Section 11(2) Exemption Claim: ITAT Visakhapatnam</a>
-            
-          </div>
-          <p class="card-summary">The Tribunal ruled that exemption under Section 11(2) should not be denied solely due to delayed filing of Form-10. It directed reconsideration where the form was available during assessment. The post Delay in Filing Form 10 Cannot Alone Defeat Section 11(2) Exemption Claim: ITAT Visakhapatnam appea</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">3d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/delay-filing-form-10-defeat-section-112-exemption-claim-itat-visakhapatnam.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.6000000000000001s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            
-            
-          </div>
-          <div class="card-title">
-            
-            <a href="https://taxguru.in/income-tax/calcutta-hc-dismisses-tax-appeal-rs-2-crore-limit-failure-show-cbdt-exception-applies.html" target="_blank" rel="noopener">Calcutta HC Dismisses Tax Appeal Below ₹2 Crore Limit for Failure to Show CBDT Exception Applies</a>
-            
-          </div>
-          <p class="card-summary">Court found that the appellant failed to clearly identify which exceptional clause applied. Since the tax effect was below Rs.2 crores and no valid exception was demonstrated, the Court held that there was no reason to entertain the appeal. Accordingly, the appeal and the connected application were </p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">3d ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/calcutta-hc-dismisses-tax-appeal-rs-2-crore-limit-failure-show-cbdt-exception-applies.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
             
           </div>
         </article>
@@ -748,31 +568,107 @@ footer a:hover{color:var(--accent);}
       
       <div class="archive-item">
         <div class="archive-dot"></div>
+        <span class="archive-source">Deloitte</span>
+        <span class="archive-title-text">
+          <a href="https://news.google.com/rss/articles/CBMiekFVX3lxTE5QZ2ZXMTNSQTBuTnR6YVJQa0lBUk9RMUd3MUdkeFplRmMzcDVJbkJkVG1zYzF2ZXN5YzZsek1Ed1NhLUhJdzcxakxRRF9mWjVTZm43T21vN1RQRzBKaTk4U1p2OC10bjJQcWN1UTdUSzZsN2xMVGNnQlZ3?oc=5" target="_blank" rel="noopener">Deloitte Transfer Pricing Talks 2026 - Deloitte</a>
+          
+        </span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">scanx.trade</span>
+        <span class="archive-title-text">
+          <a href="https://news.google.com/rss/articles/CBMihAJBVV95cUxPbmh0bHhQeDFuV1dJVU1LMDdtaGtSQnM3bXFFVkpZenNuaGFUVy1MTVdmWXlVSVZtU04xRkh5UGVvZ2lDT2hqTDVzV3czTE5tb1Rwa21pMzFUejZ4aVBhS2hqZFNIT1E4eEZGcC1ya18yOHNyczVzSVVRdWk5dVB4aWJvdnJyNmNmX01RdVJpWW0ycEQ2Z2tRYU9MR01aemRmTE1CXzdGMzA2SVR3cnBXQjFRWUFnVUFxSFRsT1dEOFpmOGxidExqSzVSOG1fRFRTbWg1bFJERUZLY3NTRkN0d0hlTi16MTdPZXBidzdQbjM4XzJndGtCbWpNd1lOWGtGeW9jUw?oc=5" target="_blank" rel="noopener">Nucleus Software Exports Receives Income Tax Demand of INR 28,33,460/- for AY 2023-24 Over Transfer Pricing Adjustments</a>
+          
+        </span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">news.bloombergtax.com</span>
+        <span class="archive-title-text">
+          <a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPTHFvOGZhS1JPTTlqZzFwcmwyVG5PNWM4WDZJc0RLaFJGWXNJek80cGtaN1d5X1VjTVNJVFZ4eWRuZ2RvZ05TNGpCeUloNVVoSzA0TzJCQUZiUWJrSmxUaklkeGdZUVVGVk9RV3BTWHpEWTM1a1l0cU14UEVyMFlVN3RCQUp1ZXlnR3RvNC1rUk5YWWtGLXNpU0ltYWcyYTB1Szk0NTJaY0NwXzZKcG5OR0o4eVN3WjRaU09KNC02dTZqdw?oc=5" target="_blank" rel="noopener">Italy’s Top Court Looks at Economics in GE Transfer Pricing Case</a>
+          
+        </span>
+        
+        <span class="archive-lens-tag">Court decisions</span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">TaxGuru India</span>
+        <span class="archive-title-text">
+          <a href="https://taxguru.in/income-tax/itat-chennai-allowed-section-80-ia-deduction-consumer-tariff-held-correct-benchmark.html" target="_blank" rel="noopener">ITAT Chennai Allowed Section 80-IA Deduction as Consumer Tariff Held Correct Benchmark</a>
+          
+        </span>
+        
+        <span class="archive-lens-tag">Court decisions</span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">TaxGuru India</span>
+        <span class="archive-title-text">
+          <a href="https://taxguru.in/income-tax/section-2711c-penalty-imposed-valuation-differences-proof-inaccuracy-sc.html" target="_blank" rel="noopener">Section 271(1)(c) Penalty Cannot Be Imposed for Valuation Differences Without Proof of Inaccuracy: SC</a>
+          
+        </span>
+        
+        <span class="archive-lens-tag">Court decisions</span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">TaxGuru India</span>
+        <span class="archive-title-text">
+          <a href="https://taxguru.in/income-tax/income-tax-madras-hc-orders-fresh-review-due-remand-report-evidence.html" target="_blank" rel="noopener">Income Tax: Madras HC Orders Fresh Review Due to Ignored Remand Report Evidence</a>
+          
+        </span>
+        
+        <span class="archive-lens-tag">Court decisions</span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">TaxGuru India</span>
+        <span class="archive-title-text">
+          <a href="https://taxguru.in/income-tax/tp-adjustments-reworked-itat-strikes-wrong-comparables-demands-parity-scientific-analysis.html" target="_blank" rel="noopener">TP Adjustments Reworked – ITAT Strikes Down Wrong Comparables, Demands Parity &amp; Scientific Analysis</a>
+          
+        </span>
+        
+        <span class="archive-lens-tag">Court decisions</span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">TaxGuru India</span>
+        <span class="archive-title-text">
+          <a href="https://taxguru.in/income-tax/direct-tax-collections-f-y2025-26-31-03-2026.html" target="_blank" rel="noopener">Direct Tax Collections for F.Y. 2025-26 as on 31.03.2026</a>
+          
+        </span>
+        
+      </div>
+      
+      
+      <div class="archive-item">
+        <div class="archive-dot"></div>
         <span class="archive-source">Google News — Transfer Pricing</span>
         <span class="archive-title-text">
           <a href="https://news.google.com/rss/articles/CBMidkFVX3lxTE5adktZZXZOWmRGYkZTX3A1dmxxaXA3MXNDWm9wN3dXcFBUdmh0VUZxekVTejIxM3R6Mmt0dHhCWHZLVkx6amNkaUhVY1Z1NXEzaWd5V2swWFY1UTh1MWpqT0taUmFOVGZVdkJnY0tWb1llRWxPX0E?oc=5" target="_blank" rel="noopener">Transfer Pricing Updates - RÖDL</a>
-          
-        </span>
-        
-      </div>
-      
-      
-      <div class="archive-item">
-        <div class="archive-dot"></div>
-        <span class="archive-source">Google News — Transfer Pricing</span>
-        <span class="archive-title-text">
-          <a href="https://news.google.com/rss/articles/CBMihAJBVV95cUxPbmh0bHhQeDFuV1dJVU1LMDdtaGtSQnM3bXFFVkpZenNuaGFUVy1MTVdmWXlVSVZtU04xRkh5UGVvZ2lDT2hqTDVzV3czTE5tb1Rwa21pMzFUejZ4aVBhS2hqZFNIT1E4eEZGcC1ya18yOHNyczVzSVVRdWk5dVB4aWJvdnJyNmNmX01RdVJpWW0ycEQ2Z2tRYU9MR01aemRmTE1CXzdGMzA2SVR3cnBXQjFRWUFnVUFxSFRsT1dEOFpmOGxidExqSzVSOG1fRFRTbWg1bFJERUZLY3NTRkN0d0hlTi16MTdPZXBidzdQbjM4XzJndGtCbWpNd1lOWGtGeW9jUw?oc=5" target="_blank" rel="noopener">Nucleus Software Exports Receives Income Tax Demand of INR 28,33,460/- for AY 2023-24 Over Transfer Pricing Adjustments - scanx.trade</a>
-          
-        </span>
-        
-      </div>
-      
-      
-      <div class="archive-item">
-        <div class="archive-dot"></div>
-        <span class="archive-source">Google News — TP Court</span>
-        <span class="archive-title-text">
-          <a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPTHFvOGZhS1JPTTlqZzFwcmwyVG5PNWM4WDZJc0RLaFJGWXNJek80cGtaN1d5X1VjTVNJVFZ4eWRuZ2RvZ05TNGpCeUloNVVoSzA0TzJCQUZiUWJrSmxUaklkeGdZUVVGVk9RV3BTWHpEWTM1a1l0cU14UEVyMFlVN3RCQUp1ZXlnR3RvNC1rUk5YWWtGLXNpU0ltYWcyYTB1Szk0NTJaY0NwXzZKcG5OR0o4eVN3WjRaU09KNC02dTZqdw?oc=5" target="_blank" rel="noopener">Italy’s Top Court Looks at Economics in GE Transfer Pricing Case - news.bloombergtax.com</a>
           
         </span>
         
@@ -795,61 +691,6 @@ footer a:hover{color:var(--accent);}
         <span class="archive-source">Tax Foundation</span>
         <span class="archive-title-text">
           <a href="https://taxfoundation.org/data/all/eu/digital-services-taxes-europe/" target="_blank" rel="noopener">Digital Services Taxes in Europe, 2026</a>
-          
-        </span>
-        
-      </div>
-      
-      
-      <div class="archive-item">
-        <div class="archive-dot"></div>
-        <span class="archive-source">TaxGuru India</span>
-        <span class="archive-title-text">
-          <a href="https://taxguru.in/income-tax/itat-chennai-allowed-section-80-ia-deduction-consumer-tariff-held-correct-benchmark.html" target="_blank" rel="noopener">ITAT Chennai Allowed Section 80-IA Deduction as Consumer Tariff Held Correct Benchmark</a>
-          
-        </span>
-        
-      </div>
-      
-      
-      <div class="archive-item">
-        <div class="archive-dot"></div>
-        <span class="archive-source">TaxGuru India</span>
-        <span class="archive-title-text">
-          <a href="https://taxguru.in/income-tax/section-2711c-penalty-imposed-valuation-differences-proof-inaccuracy-sc.html" target="_blank" rel="noopener">Section 271(1)(c) Penalty Cannot Be Imposed for Valuation Differences Without Proof of Inaccuracy: SC</a>
-          
-        </span>
-        
-      </div>
-      
-      
-      <div class="archive-item">
-        <div class="archive-dot"></div>
-        <span class="archive-source">TaxGuru India</span>
-        <span class="archive-title-text">
-          <a href="https://taxguru.in/income-tax/income-tax-madras-hc-orders-fresh-review-due-remand-report-evidence.html" target="_blank" rel="noopener">Income Tax: Madras HC Orders Fresh Review Due to Ignored Remand Report Evidence</a>
-          
-        </span>
-        
-      </div>
-      
-      
-      <div class="archive-item">
-        <div class="archive-dot"></div>
-        <span class="archive-source">TaxGuru India</span>
-        <span class="archive-title-text">
-          <a href="https://taxguru.in/income-tax/tp-adjustments-reworked-itat-strikes-wrong-comparables-demands-parity-scientific-analysis.html" target="_blank" rel="noopener">TP Adjustments Reworked – ITAT Strikes Down Wrong Comparables, Demands Parity &amp; Scientific Analysis</a>
-          
-        </span>
-        
-      </div>
-      
-      
-      <div class="archive-item">
-        <div class="archive-dot"></div>
-        <span class="archive-source">TaxGuru India</span>
-        <span class="archive-title-text">
-          <a href="https://taxguru.in/income-tax/direct-tax-collections-f-y2025-26-31-03-2026.html" target="_blank" rel="noopener">Direct Tax Collections for F.Y. 2025-26 as on 31.03.2026</a>
           
         </span>
         
