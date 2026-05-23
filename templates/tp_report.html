@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TP Special Agent — {{ generated_at }}</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
+:root {
+  --bg:#e8edf4;--bg2:#ffffff;--bg3:#dde3ec;
+  --border:rgba(0,0,0,0.09);--border2:rgba(0,0,0,0.18);
+  --accent:#089478;--accent2:#067360;--accent-dim:rgba(8,148,120,0.1);
+  --text:#0d1520;--text2:#2d3748;--text3:#718096;
+  --amber:#92400e;--blue:#1e3a8a;--red:#991b1b;--green:#064e3b;
+  --font-body:'Inter',sans-serif;--font-head:'DM Serif Display',serif;--font-mono:'DM Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.65;min-height:100vh}
+
+/* ── Masthead strip ── */
+body::before{content:'';display:block;height:4px;background:linear-gradient(90deg,#089478,#0fd4b4 35%,#1e40af 70%,#1e3a8a);position:fixed;top:0;left:0;right:0;z-index:200;}
+
+/* ── Animations ── */
+@keyframes beam-scan{0%{transform:translateX(-100%);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateX(100vw);opacity:0}}
+@keyframes fade-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes card-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.scan-beam{position:fixed;top:0;left:0;width:220px;height:100vh;background:linear-gradient(90deg,transparent,rgba(8,148,120,0.07),rgba(8,148,120,0.14),rgba(8,148,120,0.07),transparent);pointer-events:none;z-index:999;animation:beam-scan 2.4s cubic-bezier(0.4,0,0.6,1) 0.3s forwards;}
+
+/* ── Topbar ── */
+.topbar{border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:4px;z-index:100;background:rgba(255,255,255,0.98);backdrop-filter:blur(16px);box-shadow:0 1px 6px rgba(0,0,0,0.09);}
+.topbar-left{display:flex;align-items:center;gap:1rem}
+.logo-mark{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,#089478,#0bb89a);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:600;color:#fff;box-shadow:0 3px 10px rgba(8,148,120,0.4);}
+.logo-text{font-family:var(--font-head);font-size:21px;font-weight:400;color:var(--text);letter-spacing:-.02em;}
+.logo-text .logo-tp{color:var(--accent);font-style:italic;}
+.topbar-right{display:flex;align-items:center;gap:1.25rem}
+.topbar-ts{font-size:12px;color:var(--text3);font-family:var(--font-mono)}
+.sibling-link{font-size:12px;color:var(--accent2);text-decoration:none;font-family:var(--font-mono);border:1px solid rgba(8,148,120,0.3);padding:5px 12px;border-radius:5px;transition:all .2s;font-weight:500;}
+.sibling-link:hover{background:var(--accent-dim);border-color:var(--accent);color:var(--accent)}
+
+/* ── Page wrapper — full left-aligned layout ── */
+.page{max-width:1100px;margin:0 auto;padding:0 2rem;}
+
+/* ── Signal of the Day ── */
+.signal-wrap{padding:2rem 0 0}
+.signal-card{border:1px solid var(--border2);border-left:5px solid var(--accent);border-radius:0 12px 12px 0;padding:1.5rem 1.75rem;position:relative;overflow:hidden;background:var(--bg2);animation:fade-in 0.5s ease 0.3s both;box-shadow:0 3px 16px rgba(0,0,0,0.09);}
+.signal-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,148,120,0.07) 0%,transparent 55%);pointer-events:none;}
+.signal-card.urgency-high{border-left-color:var(--accent);}
+.signal-card.urgency-medium{border-left-color:var(--blue);}
+.signal-card.urgency-low{border-left-color:var(--text3);}
+.signal-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;font-weight:500;}
+.signal-headline{font-family:var(--font-head);font-size:clamp(1.25rem,2.5vw,1.85rem);line-height:1.2;color:var(--text);margin-bottom:.65rem}
+.signal-body{font-size:14px;color:var(--text2);line-height:1.75;max-width:680px}
+.signal-meta{display:flex;gap:.75rem;align-items:center;margin-top:.85rem;flex-wrap:wrap}
+.signal-lens{font-size:11px;font-family:var(--font-mono);color:var(--accent2);background:var(--accent-dim);padding:3px 10px;border-radius:3px;font-weight:500;}
+.urgency-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.urgency-dot.high{background:var(--accent)}
+.urgency-dot.medium{background:var(--blue)}
+.urgency-dot.low{background:var(--text3)}
+
+/* ── Hero ── */
+.hero{padding:2rem 0 1.5rem;animation:fade-in .5s ease .15s both;}
+.hero-label{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem;font-weight:500;}
+.hero h1{font-family:var(--font-head);font-size:clamp(1.8rem,3.8vw,2.9rem);font-weight:400;line-height:1.15;margin-bottom:.7rem;color:var(--text);}
+.hero h1 em{color:var(--accent);font-style:italic;}
+.hero-sub{font-size:14px;color:var(--text2);max-width:580px;line-height:1.75}
+
+/* ── Stats row — equal width 4 columns ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin:1.5rem 0;animation:fade-in .5s ease .3s both;}
+.stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.85rem 1.2rem;transition:box-shadow .2s,transform .2s;}
+.stat-card:hover{box-shadow:0 4px 14px rgba(0,0,0,0.1);transform:translateY(-1px)}
+.stat-card:first-child{border-left:4px solid var(--accent);background:linear-gradient(135deg,rgba(8,148,120,0.05),var(--bg2));}
+.stat-label{font-size:10px;color:var(--text3);font-family:var(--font-mono);letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px}
+.stat-val{font-size:24px;font-weight:700;color:var(--text);font-family:var(--font-mono);}
+.stat-val.accent{color:var(--accent)}
+
+/* ── Region heatmap ── */
+.region-bar{margin:0 0 1.75rem;animation:fade-in .5s ease .4s both;}
+.region-label{font-size:10px;color:var(--text3);font-family:var(--font-mono);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.7rem;font-weight:500;}
+.region-strips{display:flex;gap:10px;align-items:flex-end;height:48px}
+.region-strip{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px}
+.region-bar-fill{width:100%;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#0fd4b4,#089478);opacity:.75;transition:opacity .2s,transform .2s;min-height:5px;cursor:default;}
+.region-bar-fill:hover{opacity:1;transform:scaleY(1.05);transform-origin:bottom;}
+.region-name{font-size:10px;font-family:var(--font-mono);color:var(--text2);font-weight:600;}
+.region-num{font-size:12px;font-family:var(--font-mono);color:var(--accent);font-weight:700;}
+
+/* ── Filter bar ── */
+.filter-bar{margin:0 0 1.75rem;display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;}
+.filter-label{font-size:11px;color:var(--text3);font-family:var(--font-mono);margin-right:.25rem;font-weight:500;}
+.filter-btn{font-size:11px;padding:5px 13px;border-radius:20px;border:1px solid var(--border2);background:var(--bg2);color:var(--text2);cursor:pointer;font-family:var(--font-mono);transition:all .18s;font-weight:500;}
+.filter-btn:hover,.filter-btn.active{border-color:var(--accent);color:var(--accent);background:var(--accent-dim);}
+
+/* ── Lens section ── */
+.lens-section{margin-bottom:2.5rem}
+.lens-header{display:flex;align-items:center;gap:.65rem;margin-bottom:1rem;padding:.65rem .9rem;border-left:4px solid var(--accent);background:var(--bg2);border-radius:0 8px 8px 0;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+.lens-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.lens-title{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);font-weight:700;}
+.lens-count{margin-left:auto;font-size:11px;color:var(--text3);font-family:var(--font-mono);}
+.sparkline{display:flex;gap:2px;align-items:flex-end;height:18px;margin-left:.6rem;}
+.spark-bar{width:5px;border-radius:1px 1px 0 0;background:var(--accent);min-height:2px;}
+
+/* ── Cards ── */
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:.9rem}
+
+.news-card{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.15rem 1.25rem;display:flex;flex-direction:column;gap:.65rem;position:relative;overflow:hidden;transition:border-color .2s,transform .18s,box-shadow .18s;animation:card-in .4s ease both;}
+.news-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:transparent;}
+.news-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+
+.news-card.imp-5{
+  grid-column: 1 / -1;
+  background:linear-gradient(135deg,rgba(8,148,120,0.07) 0%,var(--bg2) 50%);
+  border:2px solid rgba(8,148,120,0.4);
+  border-left:6px solid var(--accent);
+  border-radius:0 12px 12px 0;
+  padding:1.5rem 1.75rem;
+  box-shadow:0 4px 24px rgba(8,148,120,0.15);
+}
+.news-card.imp-5::before{background:none;}
+.news-card.imp-5 .card-title{font-size:16px;font-family:var(--font-head);font-weight:400;line-height:1.35;}
+.news-card.imp-5 .card-title a{color:var(--text);}
+.news-card.imp-5 .card-summary{font-size:13.5px;color:var(--text2);}
+.news-card.imp-5:hover{box-shadow:0 8px 32px rgba(8,148,120,0.2);transform:translateY(-2px);}
+
+.news-card.imp-4{
+  grid-column: span 2;
+  border-top:3px solid var(--blue);
+  background:linear-gradient(135deg,rgba(30,58,138,0.04) 0%,var(--bg2) 40%);
+  box-shadow:0 2px 12px rgba(30,58,138,0.08);
+}
+.news-card.imp-4::before{background:none;}
+.news-card.imp-4 .card-title{font-size:14.5px;font-weight:600;}
+
+.news-card.imp-3::before{background:linear-gradient(90deg,var(--amber),#d97706);}
+.news-card.imp-2{opacity:.92;}
+.news-card.imp-2::before{background:transparent;}
+.news-card.imp-1{opacity:.75;background:var(--bg);}
+
+.court-icon{font-size:14px;margin-right:3px;vertical-align:middle;}
+.fresh-pulse{display:inline-flex;align-items:center;gap:4px;}
+.pulse-dot{width:6px;height:6px;border-radius:50%;background:#16a34a;flex-shrink:0;animation:pulse-dot 1.5s ease-in-out infinite;}
+
+.badge{font-size:10px;padding:2px 8px;border-radius:4px;font-family:var(--font-mono);font-weight:600;letter-spacing:.03em;text-transform:uppercase;}
+.badge-source{background:var(--bg3);color:var(--text2);border:1px solid var(--border2);}
+.badge-imp-5{background:rgba(8,148,120,.18);color:var(--accent2);border:1px solid rgba(8,148,120,.3);}
+.badge-imp-4{background:rgba(30,58,138,.12);color:var(--blue);border:1px solid rgba(30,58,138,.2);}
+.badge-imp-3{background:rgba(146,64,14,.1);color:var(--amber);}
+.badge-imp-2{background:rgba(45,55,72,.07);color:var(--text2);}
+.badge-imp-1{background:var(--bg3);color:var(--text3);}
+.badge-region{background:var(--bg3);color:var(--text3);border:1px solid var(--border);}
+.badge-court{background:rgba(30,58,138,.1);color:var(--blue);font-size:10px;padding:2px 7px;border-radius:4px;font-family:var(--font-mono);font-weight:600;}
+.card-meta{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.card-title{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.45;}
+.card-title a{color:inherit;text-decoration:none;transition:color .15s;}
+.card-title a:hover{color:var(--accent);}
+.card-title .no-link{color:var(--text2);font-weight:500;}
+.card-title .kw{color:var(--accent);font-weight:700;}
+.card-summary{font-size:12.5px;color:var(--text2);line-height:1.65;flex:1;}
+.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:.5rem;border-top:1px solid var(--border);}
+.card-fresh{font-size:11px;color:var(--text3);font-family:var(--font-mono);}
+.paywall-note{font-size:10px;color:var(--text3);font-family:var(--font-mono);background:var(--bg3);border:1px solid var(--border);padding:2px 7px;border-radius:3px;}
+.card-link-btn{font-size:11px;color:var(--accent2);text-decoration:none;font-family:var(--font-mono);display:flex;align-items:center;gap:3px;transition:color .15s;font-weight:500;}
+.card-link-btn:hover{color:var(--accent);}
+.card-link-btn svg{width:9px;height:9px;}
+
+/* ── Source breakdown ── */
+.source-bar{margin:0 0 1.75rem;animation:fade-in .5s ease .4s both;}
+.source-pills{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.5rem;}
+.source-pill{font-size:11px;font-family:var(--font-mono);color:var(--text2);background:var(--bg2);border:1px solid var(--border2);padding:4px 10px;border-radius:20px;display:flex;align-items:center;gap:.4rem;}
+.source-count{background:var(--accent-dim);color:var(--accent);border-radius:10px;padding:1px 6px;font-weight:700;font-size:10px;}
+.archive-section{margin:2.5rem 0 0;padding-bottom:4rem;}
+.archive-title{font-family:var(--font-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);font-weight:700;margin-bottom:1.25rem;padding-bottom:.7rem;border-bottom:3px solid var(--accent);display:inline-block;}
+.archive-day{margin-bottom:1.75rem;}
+.archive-day-label{font-size:14px;font-family:var(--font-mono);color:var(--accent);margin-bottom:.65rem;font-weight:700;letter-spacing:.02em;}
+.archive-list{background:var(--bg2);border-radius:10px;border:1px solid var(--border);overflow:hidden;}
+.archive-item{display:flex;align-items:baseline;gap:.75rem;padding:9px 14px;border-bottom:1px solid var(--border);font-size:13px;transition:background .15s;}
+.archive-item:last-child{border-bottom:none;}
+.archive-item:hover{background:var(--accent-dim);}
+.archive-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:3px;opacity:.7;}
+.archive-source{font-family:var(--font-mono);font-size:10px;color:var(--text3);min-width:110px;flex-shrink:0;font-weight:500;}
+.archive-title-text{color:var(--text2);flex:1;line-height:1.5;}
+.archive-title-text a{color:var(--text);text-decoration:none;transition:color .15s;font-weight:500;}
+.archive-title-text a:hover{color:var(--accent);}
+.archive-title-text .kw{color:var(--accent);font-weight:700;}
+.archive-lens-tag{font-family:var(--font-mono);font-size:10px;color:var(--text3);flex-shrink:0;background:var(--bg3);padding:1px 6px;border-radius:3px;}
+
+/* ── Empty ── */
+.empty{text-align:center;padding:4rem 2rem;color:var(--text3);font-family:var(--font-mono);font-size:13px;background:var(--bg2);border-radius:12px;border:1px solid var(--border);}
+
+/* ── Footer ── */
+footer{border-top:1px solid var(--border);padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:12px;color:var(--text3);font-family:var(--font-mono);}
+footer a{color:var(--text3);text-decoration:none;}
+footer a:hover{color:var(--accent);}
+
+@media(max-width:600px){
+  .page{padding:0 1rem;}
+  .hero h1{font-size:1.7rem;}
+  .card-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .archive-source{display:none;}
+  .topbar-right .topbar-ts{display:none;}
+}
+</style>
+</head>
+<body>
+<div class="scan-beam"></div>
+
+<!-- Topbar -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="logo-mark">TP</div>
+    <span class="logo-text"><span class="logo-tp">TP</span> Special Agent</span>
+  </div>
+  <div class="topbar-right">
+    <span class="topbar-ts">{{ generated_at }}</span>
+    <a class="sibling-link" href="https://miikawir-ops.github.io/International_tax_agent/int_tax_report.html" target="_blank" rel="noopener">Int'l Tax Agent →</a>
+    <a class="sibling-link" href="https://miikawir-ops.github.io/AI_valuechain/ai_chain_report.html" target="_blank" rel="noopener">AI Valuechain Agent →</a>
+  </div>
+</header>
+
+<div class="page">
+
+<!-- Signal of the Day -->
+<div class="signal-wrap">
+  <div class="signal-card urgency-{{ signal.urgency }}">
+    <p class="signal-label">TP Signal of the Day</p>
+    <h2 class="signal-headline">{{ signal.headline }}</h2>
+    <p class="signal-body">{{ signal.body }}</p>
+    <div class="signal-meta">
+      <div class="urgency-dot {{ signal.urgency }}"></div>
+      <span class="signal-lens">{{ signal.lens }}</span>
+      <span style="font-size:11px;color:var(--text3);font-family:var(--font-mono)">{{ signal.urgency }} urgency</span>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <p class="hero-label">Global transfer pricing intelligence</p>
+  <h1>What moved in <em>transfer pricing</em><br>and international tax today</h1>
+  <p class="hero-sub">Daily intelligence on <strong>intangibles</strong>, <strong>business restructuring</strong>, <strong>PE & attribution</strong>, <strong>control over risk</strong> and court decisions — filtered and classified by AI. All items relate to transfer pricing and international taxation.</p>
+</section>
+
+<!-- Stats — 4 equal columns -->
+<div class="stats-row">
+  <div class="stat-card">
+    <p class="stat-label">Items today</p>
+    <p class="stat-val accent">{{ total_items }}</p>
+  </div>
+  <div class="stat-card">
+    <p class="stat-label">Lenses active</p>
+    <p class="stat-val">{{ lens_order | length }}</p>
+  </div>
+  <div class="stat-card">
+    <p class="stat-label">Landmark / Major</p>
+    <p class="stat-val">{{ high_importance_count }}</p>
+  </div>
+  <div class="stat-card">
+    <p class="stat-label">Updated</p>
+    <p class="stat-val" style="font-size:13px;padding-top:5px">{{ generated_date }}</p>
+  </div>
+</div>
+
+<!-- Region heatmap — only show when 2+ regions active -->
+{% set active_regions = region_counts.items() | selectattr('1', 'gt', 0) | list %}
+{% if active_regions | length >= 2 %}
+<div class="region-bar">
+  <p class="region-label">Regional activity today</p>
+  <div class="region-strips">
+    {% for region, count in active_regions %}
+    <div class="region-strip">
+      <span class="region-num">{{ count }}</span>
+      <div class="region-bar-fill" style="height:{{ [5,(count/max_region*38)|int]|max }}px"></div>
+      <span class="region-name">{{ region }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Source breakdown — always shown -->
+{% if lens_order or archive_by_day %}
+<div class="source-bar">
+  <p class="region-label">Sources today</p>
+  <div class="source-pills">
+    {% set ns = namespace(sources={}) %}
+    {% for lens, items in by_lens.items() %}
+      {% for item in items %}
+        {% set src = item.source %}
+        {% if src not in ns.sources %}
+          {% set _ = ns.sources.update({src: 1}) %}
+        {% else %}
+          {% set _ = ns.sources.update({src: ns.sources[src] + 1}) %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    {% for src, count in ns.sources.items() %}
+    <span class="source-pill">{{ src }} <span class="source-count">{{ count }}</span></span>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<!-- Filter -->
+<div class="filter-bar">
+  <span class="filter-label">Lens:</span>
+  <button class="filter-btn active" onclick="filterLens('all',this)">All</button>
+  {% for lens in lens_order %}
+  <button class="filter-btn" onclick="filterLens('{{ lens|replace("'","")|replace("/","-")|replace(" ","-")|replace("&","and")|lower }}',this)">{{ lens }}</button>
+  {% endfor %}
+</div>
+
+<!-- Today's items -->
+<main>
+  {% if lens_order %}
+    {% for lens in lens_order %}
+    {% set items = by_lens[lens] %}
+    {% set spark = sparklines.get(lens,[0,0,0,0,0,0,0]) %}
+    {% set spark_max = [spark|max,1]|max %}
+    <section class="lens-section" data-lens="{{ lens|replace("'","")|replace("/","-")|replace(" ","-")|replace("&","and")|lower }}">
+      <div class="lens-header">
+        <div class="lens-dot"></div>
+        <span class="lens-title">{{ lens }}</span>
+        <div class="sparkline" title="7-day activity">
+          {% for v in spark %}
+          <div class="spark-bar" style="height:{{ [2,(v/spark_max*16)|int]|max }}px;opacity:{{ '%.2f'|format(0.2+(v/spark_max*0.65)) }}"></div>
+          {% endfor %}
+        </div>
+        <span class="lens-count">{{ items|length }} item{{ 's' if items|length!=1 }}</span>
+      </div>
+      <div class="card-grid">
+        {% for item in items %}
+        {% set is_court = item.get('lens','') == 'Court decisions' %}
+        {% set is_fresh = item.freshness and ('just now' in item.freshness or ('h ago' in item.freshness and item.freshness|replace('h ago','')|int < 7)) %}
+        <article class="news-card imp-{{ item.importance }}" style="animation-delay:{{ loop.index0 * 0.05 }}s">
+          <div class="card-meta">
+            <span class="badge badge-source">{{ item.source }}</span>
+            <span class="badge badge-imp-{{ item.importance }}">{{ importance_labels.get(item.importance,'Update') }}</span>
+            {% if is_court %}<span class="badge badge-court">⚖ Court</span>{% endif %}
+            {% if item.region and item.region != 'Global' %}<span class="badge badge-region">{{ item.region }}</span>{% endif %}
+          </div>
+          <div class="card-title">
+            {% if is_court %}<span class="court-icon">⚖</span>{% endif %}
+            {% if item.accessible %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+            {% else %}<span class="no-link">{{ item.title }}</span>{% endif %}
+          </div>
+          {% if item.ai_summary %}<p class="card-summary">{{ item.ai_summary }}</p>{% endif %}
+          <div class="card-footer">
+            {% if is_fresh %}
+            <span class="card-fresh fresh-pulse"><span class="pulse-dot"></span>{{ item.freshness }}</span>
+            {% else %}
+            <span class="card-fresh">{{ item.freshness or 'today' }}</span>
+            {% endif %}
+            {% if item.accessible %}
+            <a class="card-link-btn" href="{{ item.url }}" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
+            {% else %}<span class="paywall-note">subscription required</span>{% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  {% else %}
+  <div class="empty">No transfer pricing news found in the last 7 days.<br>Scanning global sources — check back tomorrow at 07:00 EET.</div>
+  {% endif %}
+</main>
+
+<!-- 7-day archive -->
+{% if archive_by_day %}
+<section class="archive-section">
+  <p class="archive-title">7-Day Archive — Transfer Pricing News</p>
+  {% for date_key, day_items in archive_by_day %}
+  <div class="archive-day">
+    <p class="archive-day-label">{{ day_labels.get(date_key, date_key) }}</p>
+    <div class="archive-list">
+      {% for item in day_items %}
+      {% set lens_tag = item.get('lens','') %}
+      <div class="archive-item">
+        <div class="archive-dot"></div>
+        <span class="archive-source">{{ item.source }}</span>
+        <span class="archive-title-text">
+          {% if item.get('accessible', True) %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+          {% else %}{{ item.title }}{% endif %}
+        </span>
+        {% if lens_tag and lens_tag != 'General TP' %}
+        <span class="archive-lens-tag">{{ lens_tag|replace('& ','')|truncate(16,True,'') }}</span>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+<footer>
+  <span>TP Special Agent · Built in Espoo, Finland · Powered by COBHC</span>
+  <div style="display:flex;gap:1.5rem">
+    <a href="https://miikawir-ops.github.io/International_tax_agent/int_tax_report.html" target="_blank" rel="noopener">Int'l Tax Agent</a>
+    <a href="https://miikawir-ops.github.io/AI_valuechain/ai_chain_report.html" target="_blank" rel="noopener">AI Valuechain Agent</a>
+    <span>Not legal advice · Sources may require subscription</span>
+  </div>
+</footer>
+
+</div><!-- /page -->
+
+<script>
+function filterLens(lens,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.lens-section').forEach(s=>{
+    s.style.display=(lens==='all'||s.dataset.lens===lens)?'':'none';
+  });
+}
+
+const TP_KEYWORDS = [
+  'intangibles','intangible property','DEMPE',
+  'business restructuring','restructuring',
+  'arm\'s length','control over risk','assumption of risk',
+  'permanent establishment','PE attribution','dependent agent',
+  'valuation','IP valuation','business valuation',
+  'controlled transaction','related party','intra-group','intercompany',
+  'transfer pricing','transfer price',
+  'pillar one','amount B','amount A',
+  'country-by-country','CbCR','advance pricing','APA',
+  'mutual agreement','thin capitalisation','thin capitalization',
+  'profit shifting','base erosion','diverted profits',
+  'controlled foreign','state aid','tax avoidance',
+  'withholding tax','royalt','DAC6','DAC7','ATAD','BEPS',
+];
+
+function highlightKeywords(el){
+  if(!el) return;
+  const links=el.querySelectorAll('a,.no-link');
+  links.forEach(link=>{
+    let html=link.innerHTML;
+    TP_KEYWORDS.forEach(kw=>{
+      const re=new RegExp('('+kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+      html=html.replace(re,'<span class="kw">$1</span>');
+    });
+    link.innerHTML=html;
+  });
+}
+
+document.querySelectorAll('.card-title,.archive-title-text').forEach(highlightKeywords);
+</script>
+</body>
+</html>
