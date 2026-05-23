@@ -10,7 +10,7 @@
     "lens": "General TP",
     "region": "Global",
     "importance": 3,
-    "ai_summary": "Deloitte published an article discussing the potential of Operational Transfer Pricing (OTP) to enhance efficiency and compliance within multinational enterprises. The analysis highlights how effective OTP integration can streamline tax processes and minimize transfer pricing risks across global operations.",
+    "ai_summary": "This Deloitte article explores the potential of Operational Transfer Pricing (OTP), focusing on its strategic importance for multinational enterprises. It discusses how effective OTP implementation can streamline global compliance, enhance efficiency, and reduce transfer pricing risks across various operations.",
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-05-23"
@@ -26,7 +26,7 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Bangalore ruled that only solar days, not cumulative man-days, should be considered when determining a Permanent Establishment under the India-Saudi Arabia DTAA. Since the assessee's stay in India was only 90 solar days, no PE was deemed to exist, preventing taxability in India.",
+    "ai_summary": "The Bangalore ITAT ruled that only solar days, not cumulative man-days, should be considered when determining the existence of a Permanent Establishment under the India-Saudi Arabia DTAA. In this specific case, the assessee's stay of 90 days meant no PE was deemed to exist in India.",
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-05-23"
@@ -42,7 +42,7 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Mumbai deleted a tax addition, holding that a UAE consultancy firm had no Permanent Establishment in India under the India-UAE DTAA. The Tribunal clarified that merely providing personnel to an Indian associated enterprise does not automatically create a PE.",
+    "ai_summary": "The Mumbai ITAT deleted a tax addition, holding that a UAE consultancy firm had no Permanent Establishment in India under the India-UAE DTAA. The tribunal ruled that the mere provision of personnel to an Indian associated enterprise did not automatically create a PE.",
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-05-23"
@@ -58,7 +58,7 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Mumbai ruled that an Assessing Officer cannot replace the Discounted Cash Flow (DCF) method with the Net Asset Value (NAV) method for share valuation under Rule 11UA if the assessee validly opted for DCF. This decision reinforces the statutory valuation options available to taxpayers and limits the tax authorities' discretion in challenging valuation reports.",
+    "ai_summary": "The Mumbai ITAT ruled that an Assessing Officer cannot replace the Discounted Cash Flow (DCF) method with the Net Asset Value (NAV) method for share valuation under Rule 11UA. This decision reinforces that once an assessee validly opts for DCF and submits a qualified valuation report, the AO must respect that choice.",
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-05-23"
@@ -71,10 +71,10 @@
     "source": "TaxGuru India",
     "pub": "Fri, 22 May 2026 03:31:20 +0000",
     "open": true,
-    "lens": "Court decisions",
+    "lens": "General TP",
     "region": "APAC",
     "importance": 1,
-    "ai_summary": "The Rajasthan High Court ruled that a taxpayer cannot be denied the concessional 22% corporate tax rate under Section 115BAA due to a procedural lapse in filing Form 10-IC, provided it was filed within the period permitted by CBDT Circulars. The Court emphasized that a clear exercise of a tax option should not be defeated by technical delays.",
+    "ai_summary": "The Rajasthan High Court held that the concessional 22% corporate tax rate under Section 115BAA cannot be denied solely due to a procedural lapse. The court ruled that the benefit should be granted if Form 10-IC was filed within the extended period permitted by CBDT Circulars.",
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-05-23"
@@ -87,10 +87,10 @@
     "source": "TaxGuru India",
     "pub": "Fri, 22 May 2026 03:29:20 +0000",
     "open": true,
-    "lens": "Court decisions",
+    "lens": "General TP",
     "region": "APAC",
     "importance": 1,
-    "ai_summary": "The ITAT Amritsar held that a Valuation Officer's report alone is insufficient to justify an addition under Section 69 (unexplained investments) without additional evidence of undisclosed payments. The Tribunal deleted the tax addition after finding no proof of any \"on-money\" transaction beyond the registered sale deed value.",
+    "ai_summary": "The ITAT Amritsar ruled that a District Valuation Officer's (DVO) report alone cannot justify an addition under Section 69 (unexplained investments) without additional proof of extra payment. The tribunal deleted the addition, finding no evidence of 'on-money' beyond the registered sale deed value.",
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-05-23"
