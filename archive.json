@@ -9,8 +9,8 @@
     "open": true,
     "lens": "Court decisions",
     "region": "APAC",
-    "importance": 2,
-    "ai_summary": "The ITAT Visakhapatnam ruled that a reassessment notice issued for AY 2015-16 after the expiry of the six-year limitation period was invalid. The Tribunal clarified that the amended ten-year reopening period under Section 149(1) of the Income-tax Act could not retroactively revive time-barred cases.",
+    "importance": 1,
+    "ai_summary": "The ITAT Visakhapatnam ruled that a reassessment notice issued under Section 148 for Assessment Year 2015-16, beyond the six-year limitation period, was invalid. The Tribunal clarified that the subsequent amendment extending the reopening period to ten years could not retrospectively revive time-barred cases.",
     "freshness": "9h ago",
     "accessible": true,
     "archive_date": "2026-05-24"
@@ -25,8 +25,8 @@
     "open": true,
     "lens": "Court decisions",
     "region": "APAC",
-    "importance": 3,
-    "ai_summary": "The Delhi High Court held that tax authorities should not universally mandate a 20% deposit in every stay application based on a CBDT circular. The court clarified that a complete stay of disputed demand should ordinarily be granted when the underlying issue is already covered in the assessee's favor by a binding jurisdictional High Court judgment.",
+    "importance": 1,
+    "ai_summary": "The Delhi High Court held that a CBDT circular cannot impose a mandatory 20% deposit requirement for every stay application against a tax demand. The Court stated that tax authorities should generally grant a complete stay where the issue is already covered in the assessee's favor by a binding jurisdictional High Court judgment.",
     "freshness": "9h ago",
     "accessible": true,
     "archive_date": "2026-05-24"

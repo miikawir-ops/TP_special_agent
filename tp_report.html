@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TP Special Agent — Sunday, 24 May 2026 · 19:53 EEST</title>
+<title>TP Special Agent — Sunday, 24 May 2026 · 19:59 EEST</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
 :root {
@@ -105,12 +105,10 @@ body::before{content:'';display:block;height:4px;background:linear-gradient(90de
 
 .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:.9rem}
 
-/* ── Base card ── */
 .news-card{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.15rem 1.25rem;display:flex;flex-direction:column;gap:.65rem;position:relative;overflow:hidden;transition:border-color .2s,transform .18s,box-shadow .18s;animation:card-in .4s ease both;}
 .news-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:transparent;}
 .news-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
 
-/* ── Landmark (importance 5) — full-width, breaking news feel ── */
 .news-card.imp-5{
   grid-column: 1 / -1;
   background:linear-gradient(135deg,rgba(8,148,120,0.07) 0%,var(--bg2) 50%);
@@ -126,7 +124,6 @@ body::before{content:'';display:block;height:4px;background:linear-gradient(90de
 .news-card.imp-5 .card-summary{font-size:13.5px;color:var(--text2);}
 .news-card.imp-5:hover{box-shadow:0 8px 32px rgba(8,148,120,0.2);transform:translateY(-2px);}
 
-/* ── Major (importance 4) — 2-column span, blue accent ── */
 .news-card.imp-4{
   grid-column: span 2;
   border-top:3px solid var(--blue);
@@ -136,20 +133,12 @@ body::before{content:'';display:block;height:4px;background:linear-gradient(90de
 .news-card.imp-4::before{background:none;}
 .news-card.imp-4 .card-title{font-size:14.5px;font-weight:600;}
 
-/* ── Notable (importance 3) — amber top border ── */
 .news-card.imp-3::before{background:linear-gradient(90deg,var(--amber),#d97706);}
-
-/* ── Update (importance 2) — standard, no colour ── */
 .news-card.imp-2{opacity:.92;}
 .news-card.imp-2::before{background:transparent;}
-
-/* ── Background (importance 1) — muted ── */
 .news-card.imp-1{opacity:.75;background:var(--bg);}
 
-/* ── Court decisions lens marker ── */
 .court-icon{font-size:14px;margin-right:3px;vertical-align:middle;}
-
-/* ── "NEW" pulse dot for very fresh items ── */
 .fresh-pulse{display:inline-flex;align-items:center;gap:4px;}
 .pulse-dot{width:6px;height:6px;border-radius:50%;background:#16a34a;flex-shrink:0;animation:pulse-dot 1.5s ease-in-out infinite;}
 
@@ -225,7 +214,8 @@ footer a:hover{color:var(--accent);}
     <span class="logo-text"><span class="logo-tp">TP</span> Special Agent</span>
   </div>
   <div class="topbar-right">
-    <span class="topbar-ts">Sunday, 24 May 2026 · 19:53 EEST</span>
+    <span class="topbar-ts">Sunday, 24 May 2026 · 19:59 EEST</span>
+    <a class="sibling-link" href="https://miikawir-ops.github.io/International_tax_agent/int_tax_report.html" target="_blank" rel="noopener">Int'l Tax Agent →</a>
     <a class="sibling-link" href="https://miikawir-ops.github.io/AI_valuechain/ai_chain_report.html" target="_blank" rel="noopener">AI Valuechain Agent →</a>
   </div>
 </header>
@@ -234,14 +224,14 @@ footer a:hover{color:var(--accent);}
 
 <!-- Signal of the Day -->
 <div class="signal-wrap">
-  <div class="signal-card urgency-high">
+  <div class="signal-card urgency-low">
     <p class="signal-label">TP Signal of the Day</p>
-    <h2 class="signal-headline">Delhi HC blocks mandatory 20% deposit for dispute stay applications.</h2>
-    <p class="signal-body">This ruling offers crucial relief to taxpayers in India, preventing a blanket 20% deposit mandate for stay applications against tax demands. In practice, this significantly improves cash flow for MNEs navigating Indian tax disputes, enhancing their leverage during appeal processes.</p>
+    <h2 class="signal-headline">Indian court decision reinforces strict adherence to reassessment limitation periods.</h2>
+    <p class="signal-body">This ruling underscores that tax authorities must adhere strictly to statutory limitation periods when initiating reassessment proceedings, including those involving transfer pricing adjustments. For global TP professionals, this highlights the critical importance of understanding and tracking local procedural deadlines and legal frameworks governing tax assessments and challenges across jurisdictions.</p>
     <div class="signal-meta">
-      <div class="urgency-dot high"></div>
+      <div class="urgency-dot low"></div>
       <span class="signal-lens">Court decisions</span>
-      <span style="font-size:11px;color:var(--text3);font-family:var(--font-mono)">high urgency</span>
+      <span style="font-size:11px;color:var(--text3);font-family:var(--font-mono)">low urgency</span>
     </div>
   </div>
 </div>
@@ -257,11 +247,11 @@ footer a:hover{color:var(--accent);}
 <div class="stats-row">
   <div class="stat-card">
     <p class="stat-label">Items today</p>
-    <p class="stat-val accent">2</p>
+    <p class="stat-val accent">0</p>
   </div>
   <div class="stat-card">
     <p class="stat-label">Lenses active</p>
-    <p class="stat-val">1</p>
+    <p class="stat-val">0</p>
   </div>
   <div class="stat-card">
     <p class="stat-label">Landmark / Major</p>
@@ -284,20 +274,6 @@ footer a:hover{color:var(--accent);}
   <div class="source-pills">
     
     
-      
-        
-        
-          
-        
-      
-        
-        
-          
-        
-      
-    
-    
-    <span class="source-pill">TaxGuru India <span class="source-count">2</span></span>
     
   </div>
 </div>
@@ -308,95 +284,12 @@ footer a:hover{color:var(--accent);}
   <span class="filter-label">Lens:</span>
   <button class="filter-btn active" onclick="filterLens('all',this)">All</button>
   
-  <button class="filter-btn" onclick="filterLens('court-decisions',this)">Court decisions</button>
-  
 </div>
 
 <!-- Today's items -->
 <main>
   
-    
-    
-    
-    
-    <section class="lens-section" data-lens="court-decisions">
-      <div class="lens-header">
-        <div class="lens-dot"></div>
-        <span class="lens-title">Court decisions</span>
-        <div class="sparkline" title="7-day activity">
-          
-          <div class="spark-bar" style="height:4px;opacity:0.36"></div>
-          
-          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
-          
-          <div class="spark-bar" style="height:2px;opacity:0.20"></div>
-          
-          <div class="spark-bar" style="height:4px;opacity:0.36"></div>
-          
-          <div class="spark-bar" style="height:16px;opacity:0.85"></div>
-          
-          <div class="spark-bar" style="height:16px;opacity:0.85"></div>
-          
-          <div class="spark-bar" style="height:16px;opacity:0.85"></div>
-          
-        </div>
-        <span class="lens-count">2 items</span>
-      </div>
-      <div class="card-grid">
-        
-        
-        
-        <article class="news-card imp-3" style="animation-delay:0.0s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-3">Notable</span>
-            <span class="badge badge-court">⚖ Court</span>
-            <span class="badge badge-region">APAC</span>
-          </div>
-          <div class="card-title">
-            <span class="court-icon">⚖</span>
-            <a href="https://taxguru.in/income-tax/cbdt-circular-mandate-20-percent-deposit-stay-application-delhi-hc.html" target="_blank" rel="noopener">CBDT Circular Cannot Be Used to Mandate 20% Deposit in Every Stay Application: Delhi HC</a>
-            
-          </div>
-          <p class="card-summary">The Delhi High Court held that tax authorities should not universally mandate a 20% deposit in every stay application based on a CBDT circular. The court clarified that a complete stay of disputed demand should ordinarily be granted when the underlying issue is already covered in the assessee&#39;s favor by a binding jurisdictional High Court judgment.</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">9h ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/cbdt-circular-mandate-20-percent-deposit-stay-application-delhi-hc.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-        
-        
-        <article class="news-card imp-2" style="animation-delay:0.05s">
-          <div class="card-meta">
-            <span class="badge badge-source">TaxGuru India</span>
-            <span class="badge badge-imp-2">Update</span>
-            <span class="badge badge-court">⚖ Court</span>
-            <span class="badge badge-region">APAC</span>
-          </div>
-          <div class="card-title">
-            <span class="court-icon">⚖</span>
-            <a href="https://taxguru.in/income-tax/itat-quashes-section-148-notice-reassessment-initiated-six-year-limitation.html" target="_blank" rel="noopener">ITAT Quashes Section 148 Notice as Reassessment Was Initiated Beyond Six-Year Limitation</a>
-            
-          </div>
-          <p class="card-summary">The ITAT Visakhapatnam ruled that a reassessment notice issued for AY 2015-16 after the expiry of the six-year limitation period was invalid. The Tribunal clarified that the amended ten-year reopening period under Section 149(1) of the Income-tax Act could not retroactively revive time-barred cases.</p>
-          <div class="card-footer">
-            
-            <span class="card-fresh">9h ago</span>
-            
-            
-            <a class="card-link-btn" href="https://taxguru.in/income-tax/itat-quashes-section-148-notice-reassessment-initiated-six-year-limitation.html" target="_blank" rel="noopener">Read <svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 9L9 1M9 1H4M9 1V6"/></svg></a>
-            
-          </div>
-        </article>
-        
-      </div>
-    </section>
-    
+  <div class="empty">No transfer pricing news found in the last 7 days.<br>Scanning global sources — check back tomorrow at 07:00 EET.</div>
   
 </main>
 
@@ -973,6 +866,7 @@ footer a:hover{color:var(--accent);}
 <footer>
   <span>TP Special Agent · Built in Espoo, Finland · Powered by COBHC</span>
   <div style="display:flex;gap:1.5rem">
+    <a href="https://miikawir-ops.github.io/International_tax_agent/int_tax_report.html" target="_blank" rel="noopener">Int'l Tax Agent</a>
     <a href="https://miikawir-ops.github.io/AI_valuechain/ai_chain_report.html" target="_blank" rel="noopener">AI Valuechain Agent</a>
     <span>Not legal advice · Sources may require subscription</span>
   </div>
@@ -981,7 +875,6 @@ footer a:hover{color:var(--accent);}
 </div><!-- /page -->
 
 <script>
-// Lens filter
 function filterLens(lens,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
@@ -990,9 +883,7 @@ function filterLens(lens,btn){
   });
 }
 
-// Highlight TP keywords in card titles and archive titles
 const TP_KEYWORDS = [
-  // Priority — Tier 1 TP topics
   'intangibles','intangible property','DEMPE',
   'business restructuring','restructuring',
   'arm\'s length','control over risk','assumption of risk',
@@ -1000,7 +891,6 @@ const TP_KEYWORDS = [
   'valuation','IP valuation','business valuation',
   'controlled transaction','related party','intra-group','intercompany',
   'transfer pricing','transfer price',
-  // Secondary — Tier 2
   'pillar one','amount B','amount A',
   'country-by-country','CbCR','advance pricing','APA',
   'mutual agreement','thin capitalisation','thin capitalization',
