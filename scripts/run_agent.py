@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("tp-agent")
  
 GEMINI_API_KEY  = os.environ.get("GEMINI_API_KEY", "")
-LOOKBACK_HOURS  = 48
+LOOKBACK_HOURS  = 96
 ARCHIVE_DAYS    = 7
 MAX_ITEMS       = 40
 REQUEST_TIMEOUT = 15
