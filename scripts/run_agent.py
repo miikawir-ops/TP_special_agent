@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("tp-agent")
  
 GEMINI_API_KEY  = os.environ.get("GEMINI_API_KEY", "")
-LOOKBACK_HOURS  = 48        # 48h — keeps content fresh and current
+LOOKBACK_HOURS  = 48
 ARCHIVE_DAYS    = 7
 MAX_ITEMS       = 40
 REQUEST_TIMEOUT = 15
@@ -37,8 +37,6 @@ REQUEST_TIMEOUT = 15
 REPO_ROOT    = Path(__file__).parent.parent
 ARCHIVE_FILE = REPO_ROOT / "archive.json"
  
-# ── Publisher domain → display name map ──────────────────────────────────────
-# Extracts real publisher from Google News aggregated items
 PUBLISHER_MAP = {
     "bloombergtax.com":           "Bloomberg Tax",
     "bloomberg.com":              "Bloomberg Tax",
@@ -58,6 +56,8 @@ PUBLISHER_MAP = {
     "deloitte.com":               "Deloitte Tax",
     "ey.com":                     "EY Tax",
     "kpmg.com":                   "KPMG Tax",
+    "bdo.com":                    "BDO",
+    "bdo.global":                 "BDO",
     "taxobservatory.eu":          "EU Tax Observatory",
     "eur-lex.europa.eu":          "EUR-Lex",
     "curia.europa.eu":            "CJEU",
@@ -65,13 +65,18 @@ PUBLISHER_MAP = {
     "polity.org.za":              "Polity (SA)",
     "taxanalysts.org":            "Tax Analysts",
     "kluwertaxlawblog.com":       "Kluwer Tax Blog",
-    "rödl.com":                   "RÖDL",
     "roedl.com":                  "RÖDL",
     "tpnews.ca":                  "TP News",
+    "bakermckenzie.com":          "Baker McKenzie",
+    "linklaters.com":             "Linklaters",
+    "freshfields.com":            "Freshfields",
+    "skadden.com":                "Skadden",
+    "cliffordchance.com":         "Clifford Chance",
+    "allenovery.com":             "Allen & Overy",
+    "whitecase.com":              "White & Case",
 }
  
 TP_KEYWORDS = [
-    # ── TIER 1 triggers — court, regulation, priority TP topics ──
     # Court & regulatory signals
     "tax court", "tax tribunal", "tax ruling", "court decision",
     "tax case", "tax dispute", "judgment", "appellant",
@@ -86,7 +91,7 @@ TP_KEYWORDS = [
     "valuation", "business valuation", "IP valuation",
     "arm's length", "arm's-length", "arms length",
  
-    # ── TIER 2 triggers — general TP relevance ──
+    # General TP relevance
     "transfer pricing", "transfer price",
     "related party", "intra-group", "intercompany",
     "controlled transaction", "comparable",
@@ -105,29 +110,23 @@ TP_KEYWORDS = [
     "state aid", "tax avoidance",
 ]
  
-# ── Tier definitions used by Gemini importance scoring ────────────────────────
-# Tier 1 (importance 4-5): court decisions, new regulation, priority TP topics
-# Tier 2 (importance 2-3): policy, analysis, general TP updates
-# Tier 3 (importance 1):   background, tangential — goes to archive only
- 
 LENSES = [
-    "Intangibles & IP",          # most watched — DEMPE, royalties, IP ownership
-    "Business restructuring",    # conversions, transfers, supply chain changes
-    "PE & attribution",          # permanent establishment, profit attribution
-    "Court decisions",           # rulings globally — most actionable intelligence
-    "Finance & treasury",        # intra-group loans, guarantees, cash pooling
-    "AI & digital economy",      # emerging TP issues for digital business
-    "Dispute resolution / MAP",  # APAs, MAPs, arbitration
-    "Amount B & nexus",          # Pillar One Amount B, simplified arm's length
-    "Documentation & CbCR",      # TP docs, master file, local file, CbC
-    "General TP",                # catch-all
+    "Intangibles & IP",
+    "Business restructuring",
+    "PE & attribution",
+    "Court decisions",
+    "Finance & treasury",
+    "AI & digital economy",
+    "Dispute resolution / MAP",
+    "Amount B & nexus",
+    "Documentation & CbCR",
+    "General TP",
 ]
  
 REGIONS = ["Global", "EU", "US", "APAC", "Nordic", "Other"]
  
 RSS_FEEDS = [
-    # ── Google News RSS — most reliable, always works, global coverage ──────────
-    # Google News generates RSS for any search query — perfectly filtered to TP
+    # ── Google News — core TP queries ────────────────────────────────────────
     {
         "name": "Google News — Transfer Pricing",
         "url": "https://news.google.com/rss/search?q=%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
@@ -154,7 +153,7 @@ RSS_FEEDS = [
         "open": True,
     },
  
-    # ── Specialist confirmed-working feeds ───────────────────────────────────────
+    # ── Specialist feeds ─────────────────────────────────────────────────────
     {
         "name": "Tax Foundation",
         "url": "https://taxfoundation.org/feed/",
@@ -186,7 +185,7 @@ RSS_FEEDS = [
         "open": True,
     },
  
-    # ── Big Four Google News feeds ────────────────────────────────────────────
+    # ── Big Four ─────────────────────────────────────────────────────────────
     {
         "name": "Google News — KPMG TP",
         "url": "https://news.google.com/rss/search?q=KPMG+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
@@ -208,7 +207,46 @@ RSS_FEEDS = [
         "open": True,
     },
  
-    # ── EY BorderCrossings TP podcast ─────────────────────────────────────────
+    # ── BDO ──────────────────────────────────────────────────────────────────
+    {
+        "name": "Google News — BDO TP",
+        "url": "https://news.google.com/rss/search?q=BDO+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+ 
+    # ── Law firms ────────────────────────────────────────────────────────────
+    {
+        "name": "Google News — Baker McKenzie TP",
+        "url": "https://news.google.com/rss/search?q=%22Baker+McKenzie%22+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — Linklaters TP",
+        "url": "https://news.google.com/rss/search?q=Linklaters+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — Freshfields TP",
+        "url": "https://news.google.com/rss/search?q=Freshfields+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — Skadden TP",
+        "url": "https://news.google.com/rss/search?q=Skadden+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — Clifford Chance TP",
+        "url": "https://news.google.com/rss/search?q=%22Clifford+Chance%22+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — White & Case TP",
+        "url": "https://news.google.com/rss/search?q=%22White+%26+Case%22+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+ 
+    # ── EY BorderCrossings podcast ────────────────────────────────────────────
     {
         "name": "EY BorderCrossings Podcast",
         "url": "https://feeds.libsyn.com/507593/rss",
@@ -219,40 +257,24 @@ RSS_FEEDS = [
 # ── Helpers ───────────────────────────────────────────────────────────────────
  
 def extract_publisher(title: str, url: str, feed_name: str, entry=None) -> str:
-    """
-    Extract real publisher from Google News aggregated items.
-    Google News titles end with ' - publisher.domain.com' or ' - Publisher Name'.
-    feedparser also provides entry.source.title for some feeds.
-    """
-    # 1. Try feedparser source tag (most reliable when present)
     if entry is not None:
         src = getattr(entry, "source", None)
         if src:
             src_title = getattr(src, "title", "")
             if src_title and len(src_title) < 60:
                 return src_title
- 
-    # 2. Parse ' - something' suffix from Google News title
     if " - " in title:
         suffix = title.rsplit(" - ", 1)[-1].strip()
-        # Could be a domain (news.bloombergtax.com) or publisher name
-        # Check domain map first
         for domain, name in PUBLISHER_MAP.items():
             if domain in suffix.lower():
                 return name
-        # If it looks like a clean publisher name (not a URL)
         if 2 < len(suffix) < 50 and "." not in suffix and suffix[0].isupper():
             return suffix
- 
-    # 3. Match URL domain against known publishers
     for domain, name in PUBLISHER_MAP.items():
         if domain in url.lower():
             return name
- 
-    # 4. Clean up feed name
     if feed_name.startswith("Google News — "):
         return feed_name.replace("Google News — ", "GN: ")
- 
     return feed_name
  
 def item_id(url):
@@ -326,13 +348,11 @@ def fetch_rss_items():
             log.info(f"Fetching: {feed_cfg['name']}")
             feed = feedparser.parse(feed_cfg["url"],
                                     request_headers={"User-Agent": "Mozilla/5.0 (compatible; TP-Agent/1.0)"})
-            # Diagnostic: log raw feed status
             status    = getattr(feed, "status", "no-status")
             n_entries = len(feed.entries)
             bozo      = getattr(feed, "bozo", False)
             bozo_exc  = str(getattr(feed, "bozo_exception", "")) if bozo else ""
             log.info(f"  status={status} entries={n_entries} bozo={bozo} {bozo_exc[:80]}")
- 
             before = len(items)
             for entry in feed.entries:
                 title   = getattr(entry, "title",   "").strip()
@@ -341,22 +361,14 @@ def fetch_rss_items():
                 pub_str = getattr(entry, "published", "") or getattr(entry, "updated", "")
                 if not title or not link:
                     continue
-                recent = is_recent(entry)
-                tp     = is_tp_relevant(f"{title} {summary}")
-                if not recent:
-                    log.debug(f"  SKIP old: {title[:60]}")
+                if not is_recent(entry):
                     continue
-                if not tp:
-                    log.debug(f"  SKIP non-TP: {title[:60]}")
+                if not is_tp_relevant(f"{title} {summary}"):
                     continue
-                # Extract real publisher (especially for Google News aggregated items)
                 publisher = extract_publisher(title, link, feed_cfg["name"], entry)
-                # Clean title: remove domain suffix added by Google News
-                # e.g. "Italy TP Case - news.bloombergtax.com" → "Italy TP Case"
                 clean_title = title
                 if " - " in title:
                     suffix = title.rsplit(" - ", 1)[-1].strip()
-                    # Remove if suffix looks like a domain or known publisher
                     if "." in suffix or any(d in suffix.lower() for d in PUBLISHER_MAP):
                         clean_title = title.rsplit(" - ", 1)[0].strip()
                 items.append({
@@ -368,8 +380,7 @@ def fetch_rss_items():
                     "pub":     pub_str,
                     "open":    feed_cfg["open"],
                 })
-            added = len(items) - before
-            log.info(f"  -> {added} TP items (from {n_entries} entries)")
+            log.info(f"  -> {len(items)-before} TP items (from {n_entries} entries)")
         except Exception as e:
             log.warning(f"Feed failed {feed_cfg['name']}: {e}")
     log.info(f"Total fetched: {len(items)}")
@@ -418,7 +429,7 @@ Assign ONE lens (ONE of: {lenses}):
   "Intangibles & IP"       → IP ownership, royalties, DEMPE, licensing, brand, software, IP valuation
   "Business restructuring" → supply chain changes, function transfers, business model changes, exits
   "PE & attribution"       → permanent establishment, profit attribution, nexus, dependent agent
-  "Court decisions"        → ANY ruling, judgment, tribunal decision, court case (use even if another lens also fits)
+  "Court decisions"        → ANY ruling, judgment, tribunal decision, court case
   "Finance & treasury"     → intra-group loans, financial guarantees, cash pooling, financial transactions
   "AI & digital economy"   → digital services, AI-related TP, platform economy, data as intangible
   "Dispute resolution / MAP" → APAs, MAPs, arbitration, competent authority
@@ -455,7 +466,6 @@ def classify_with_gemini(items):
         )
         try:
             log.info(f"Classifying batch {i//15 + 1} ({len(batch)} items)...")
-            # Retry up to 3 times on quota errors
             raw = None
             for attempt in range(3):
                 try:
@@ -596,19 +606,13 @@ def check_accessibility(items):
 # ── Render ────────────────────────────────────────────────────────────────────
  
 def render_report(items, signal, archive, sparklines, region_counts):
-    # Sort by importance desc, then source
     items.sort(key=lambda x: (-x.get("importance",0), x.get("source","")))
- 
-    # Tier gating: importance 1 = archive only, never shown as a card
-    main_items    = [it for it in items if it.get("importance", 1) >= 2][:MAX_ITEMS]
-    archive_only  = [it for it in items if it.get("importance", 1) < 2]
-    log.info(f"Main feed: {len(main_items)} items | Archive-only (tier 3): {len(archive_only)} items")
- 
+    main_items   = [it for it in items if it.get("importance", 1) >= 2][:MAX_ITEMS]
+    archive_only = [it for it in items if it.get("importance", 1) < 2]
+    log.info(f"Main feed: {len(main_items)} items | Archive-only: {len(archive_only)} items")
     by_lens = defaultdict(list)
     for item in main_items:
         by_lens[item.get("lens","General TP")].append(item)
- 
-    # Order lenses by LENSES definition order (not just max importance)
     lens_order = [l for l in LENSES if l in by_lens]
     high_importance_count = sum(1 for it in main_items if it.get("importance",0) >= 4)
     now_helsinki  = datetime.now(HELSINKI)
@@ -619,15 +623,11 @@ def render_report(items, signal, archive, sparklines, region_counts):
         try:
             dt   = datetime.strptime(d, "%Y-%m-%d").date()
             diff = (today - dt).days
-            if diff == 0:
-                day_labels[d] = "Today"
-            elif diff == 1:
-                day_labels[d] = "Yesterday"
-            else:
-                day_labels[d] = dt.strftime("%A, %d %b")
+            if diff == 0:   day_labels[d] = "Today"
+            elif diff == 1: day_labels[d] = "Yesterday"
+            else:           day_labels[d] = dt.strftime("%A, %d %b")
         except Exception:
             day_labels[d] = d
- 
     env = Environment(loader=FileSystemLoader(REPO_ROOT / "templates"), autoescape=True)
     return env.get_template("report.html").render(
         generated_at          = now_helsinki.strftime("%A, %d %B %Y · %H:%M") + " " + now_helsinki.strftime("%Z"),
@@ -649,7 +649,7 @@ def render_report(items, signal, archive, sparklines, region_counts):
  
 def main():
     log.info("TP Special Agent starting")
-    raw_items = deduplicate(fetch_rss_items())
+    raw_items     = deduplicate(fetch_rss_items())
     log.info(f"Unique items: {len(raw_items)}")
     enriched      = classify_with_gemini(raw_items) if raw_items else []
     enriched      = check_accessibility(enriched)
@@ -665,4 +665,3 @@ def main():
  
 if __name__ == "__main__":
     main()
- 
