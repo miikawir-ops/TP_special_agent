@@ -259,6 +259,33 @@ RSS_FEEDS = [
         "url": "https://www.oecd.org/tax/rss.xml",
         "open": True,
     },
+ 
+    # ── International tax authorities & courts ────────────────────────────────
+    {
+        "name": "Google News — HMRC TP",
+        "url": "https://news.google.com/rss/search?q=HMRC+%22transfer+pricing%22+OR+%22diverted+profits%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — IRS TP",
+        "url": "https://news.google.com/rss/search?q=IRS+%22transfer+pricing%22+OR+%22section+482%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — US Tax Court TP",
+        "url": "https://news.google.com/rss/search?q=%22US+Tax+Court%22+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — UN Tax TP",
+        "url": "https://news.google.com/rss/search?q=%22United+Nations%22+tax+%22transfer+pricing%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
+    {
+        "name": "Google News — EU Commission TP",
+        "url": "https://news.google.com/rss/search?q=%22European+Commission%22+%22transfer+pricing%22+OR+%22state+aid%22&hl=en-US&gl=US&ceid=US:en",
+        "open": True,
+    },
 ]
  
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -672,3 +699,4 @@ def main():
  
 if __name__ == "__main__":
     main()
+ 
