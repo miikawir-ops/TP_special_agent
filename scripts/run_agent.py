@@ -29,7 +29,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger("tp-agent")
  
 GEMINI_API_KEY  = os.environ.get("GEMINI_API_KEY", "")
-LOOKBACK_HOURS  = 96
+LOOKBACK_HOURS  = 48
 ARCHIVE_DAYS    = 7
 MAX_ITEMS       = 40
 REQUEST_TIMEOUT = 15
@@ -250,6 +250,13 @@ RSS_FEEDS = [
     {
         "name": "EY BorderCrossings Podcast",
         "url": "https://feeds.libsyn.com/507593/rss",
+        "open": True,
+    },
+ 
+    # ── OECD direct feed ─────────────────────────────────────────────────────
+    {
+        "name": "OECD Tax",
+        "url": "https://www.oecd.org/tax/rss.xml",
         "open": True,
     },
 ]
