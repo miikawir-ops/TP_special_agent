@@ -8,12 +8,60 @@
     "pub": "Mon, 20 Jul 2026 10:04:57 GMT",
     "open": true,
     "lens": "General TP",
-    "region": "APAC",
+    "region": "Global",
     "importance": 3,
-    "ai_summary": "This article from MUC Consulting discusses the implications of single-gate natural resource export models on transfer pricing. It likely explores how profit allocation and pricing methodologies should be applied to transactions involving commodity exports.",
-    "freshness": "21h ago",
+    "ai_summary": "This article from MUC Consulting discusses the complexities of transfer pricing for single-gate natural resource exports. It explores how specific industry dynamics, such as valuation and export mechanisms, impact the arm's length determination for such transactions.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-07-21"
+    "archive_date": "2026-07-22"
+  },
+  {
+    "id": "203a3e473850",
+    "title": "Transfer pricing documentation and tax and customs-tax audits - RSM Global",
+    "summary": "Transfer pricing documentation and tax and customs-tax audits RSM Global",
+    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTUoxVkJFWWp2TFU0cDhnRmZBUllDMzNHZDBiOEVQWGU4dVBVWnhyTm9SYjRQdlZuOTNpaDBaOG9oQVNTVFNIZS1XaEh5UmZHUFpsOW5UM014dnZRUTFsX3FIeVA1ekFVVUNzWXVUdTJJTWNlLTE2aXJQME5qckhQc0lqOXZzODJQeWF2c1BB?oc=5",
+    "source": "RSM Global",
+    "pub": "Mon, 20 Jul 2026 21:51:02 GMT",
+    "open": true,
+    "lens": "Documentation & CbCR",
+    "region": "Global",
+    "importance": 3,
+    "ai_summary": "RSM Global provides insights into the critical role of robust transfer pricing documentation in mitigating risks during tax and customs-tax audits. The analysis likely covers best practices for preparing and maintaining documentation to withstand scrutiny from tax authorities globally.",
+    "freshness": "1d ago",
+    "accessible": true,
+    "archive_date": "2026-07-22"
+  },
+  {
+    "id": "7b18e0013fe9",
+    "title": "CIT cannot Cancel Section 12A Registration Before Section 12AA(3) Insertion: SC",
+    "summary": "Supreme Court held the CIT had no power to cancel Section 12A registration before 01.10.2004, restored the ITAT order and set aside the High Court judgment. The post CIT cannot Cancel Section 12A Registration Before Section 12AA(3) Insertion: SC appeared first on TaxGuru .",
+    "url": "https://taxguru.in/income-tax/cit-cancel-section-12a-registration-section-12aa3-insertion-sc.html",
+    "source": "TaxGuru India",
+    "pub": "Tue, 21 Jul 2026 14:37:05 +0000",
+    "open": true,
+    "lens": "General TP",
+    "region": "APAC",
+    "importance": 1,
+    "ai_summary": "The Indian Supreme Court ruled that the Commissioner of Income Tax lacked the power to cancel Section 12A registration before October 1, 2004, when Section 12AA(3) was inserted. This decision restored an ITAT order and set aside a High Court judgment concerning charitable trusts.",
+    "freshness": "16h ago",
+    "accessible": true,
+    "archive_date": "2026-07-22"
+  },
+  {
+    "id": "a20e959f78f2",
+    "title": "Double Taxation Relief on Bonus Provision Reversal; Brokerage Provision Allowed; Section 80G Deduction Upheld for CSR Donations: ITAT Mumbai",
+    "summary": "ITAT Mumbai deleted disallowances on bonus provision reversal and brokerage provision, allowed Section 80G deduction, and allowed the assessee's appeal. The post Double Taxation Relief on Bonus Provision Reversal; Brokerage Provision Allowed; Section 80G Deduction Upheld for CSR Donations: ITAT Mumbai appeared first on TaxGuru .",
+    "url": "https://taxguru.in/income-tax/double-taxation-relief-bonus-provision-reversal-brokerage-provision-allowed-section-80g-deduction-upheld-csr-donations-itat-mumbai.html",
+    "source": "TaxGuru India",
+    "pub": "Tue, 21 Jul 2026 09:13:19 +0000",
+    "open": true,
+    "lens": "General TP",
+    "region": "APAC",
+    "importance": 1,
+    "ai_summary": "The ITAT Mumbai allowed an assessee's appeal, deleting disallowances related to bonus provision reversal and brokerage provision. The tribunal also upheld the Section 80G deduction for Corporate Social Responsibility donations in this general income tax case.",
+    "freshness": "22h ago",
+    "accessible": true,
+    "archive_date": "2026-07-22"
   },
   {
     "id": "2c97fd1d73df",
@@ -26,10 +74,10 @@
     "lens": "General TP",
     "region": "APAC",
     "importance": 1,
-    "ai_summary": "The ITAT Visakhapatnam deleted a Section 271AAB penalty, ruling that the Revenue failed to prove undisclosed income despite search disclosures. This decision pertains to general tax penalties in India and does not directly address transfer pricing matters.",
-    "freshness": "2h ago",
+    "ai_summary": "The ITAT Visakhapatnam deleted a Section 271AAB penalty imposed on an assessee, ruling that the Revenue failed to establish undisclosed income despite search disclosures. This decision pertains to general income tax penalties in India.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-07-21"
+    "archive_date": "2026-07-22"
   },
   {
     "id": "b25dca80b852",
@@ -42,10 +90,10 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Chennai directed the exclusion of high-turnover and functionally dissimilar companies from the transfer pricing comparable set. This ruling applied a ₹200 Crore turnover filter and mandated the inclusion of Rheal Software for benchmarking purposes in India.",
-    "freshness": "4h ago",
+    "ai_summary": "The ITAT Chennai issued a significant ruling on a transfer pricing case, directing the application of a ₹200 Crore turnover filter for comparable selection. The tribunal mandated the exclusion of high-turnover and functionally different comparables, while including Rheal Software for benchmarking analysis.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-07-21"
+    "archive_date": "2026-07-22"
   },
   {
     "id": "44a975cfe2e5",
@@ -58,10 +106,10 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Delhi modified the transfer pricing comparable set and remanded adjustments related to overdue receivables. This decision also directed the recomputation of Section 234C interest, impacting TP and financial adjustments in India.",
-    "freshness": "4h ago",
+    "ai_summary": "The ITAT Delhi issued a ruling that modified the set of transfer pricing comparables for an assessee. The tribunal also remanded the issues of overdue receivables adjustment and Form 26AS additions, directing a recomputation of Section 234C interest.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-07-21"
+    "archive_date": "2026-07-22"
   },
   {
     "id": "880a384bb7e8",
@@ -814,21 +862,5 @@
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-07-15"
-  },
-  {
-    "id": "4f0913cfe645",
-    "title": "Brussels in Brief: Commission approves €85 million Irish State aid for fuel - Farming Life",
-    "summary": "Brussels in Brief: Commission approves €85 million Irish State aid for fuel Farming Life",
-    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQUWFRS2tYaVdGc1VlZWJiUmZBckJIVkprWEd0c3QwMjc0bVJab2dSLW1waUJ3SEY5SE1xQ3FDb1ZLcVNtUUVtZ095NjFuVTMzM0RTd0p3N0JfaTZmdk5ZV3lYVnJoNnUzQmtWa2Y1WG16SFRMU3dLMnpzaW5LaE1XUjd0aWw1ZjJ6emNTTkhrMTFxSkd1cEtzbVQtMGpnOXFIbjdZbGVTWWp4NExzZFdxN1JxU05zZHBfYmNDVTNnbmljZmh0bHgwNGhnSQ?oc=5",
-    "source": "Farming Life",
-    "pub": "Sun, 12 Jul 2026 09:00:00 GMT",
-    "open": true,
-    "lens": "General TP",
-    "region": "EU",
-    "importance": 1,
-    "ai_summary": "The European Commission has approved €85 million in Irish state aid designated for fuel, as reported by Farming Life. This approval ensures the aid package complies with EU state aid regulations, preventing undue distortion of competition.",
-    "freshness": "1d ago",
-    "accessible": true,
-    "archive_date": "2026-07-14"
   }
 ]
