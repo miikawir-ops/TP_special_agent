@@ -1,5 +1,21 @@
 [
   {
+    "id": "6bd24ac4f593",
+    "title": "FRCS tightens transfer pricing checks - FBC News",
+    "summary": "FRCS tightens transfer pricing checks FBC News",
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9IUHJvS05GbkJ4enJSOEptRm5nWUEtSmNuZ2M4TTNtRjFreHpLNmVOanV3SGFnaEM2QUFRQnRKb1JfdXpHQ1hfOHNWalg5SzNyZEljcUJXXzJkeGRIbXVURlo0UGRTeTNyVXRwMEtGOVNjdkxkU2w3RC1n?oc=5",
+    "source": "FBC News",
+    "pub": "Mon, 10 Aug 2026 01:18:46 GMT",
+    "open": true,
+    "lens": "General TP",
+    "region": "APAC",
+    "importance": 3,
+    "ai_summary": "The Fiji Revenue and Customs Service (FRCS) is reportedly tightening its transfer pricing compliance checks. This initiative suggests increased scrutiny and enforcement efforts by the Fijian tax authority on intercompany transactions.",
+    "freshness": "4h ago",
+    "accessible": true,
+    "archive_date": "2026-08-10"
+  },
+  {
     "id": "c28b51b3e6fe",
     "title": "Income Tax Rules 2026: Key Changes in Advance Pricing Agreements",
     "summary": "CBDT revises APA Forms 51, 52 and 54, standardises the ₹20 lakh fee and simplifies withdrawal, compliance and renewal procedures. The post Income Tax Rules 2026: Key Changes in Advance Pricing Agreements appeared first on TaxGuru .",
@@ -10,10 +26,10 @@
     "lens": "Dispute resolution / MAP",
     "region": "APAC",
     "importance": 3,
-    "ai_summary": "India's Central Board of Direct Taxes (CBDT) has revised Advance Pricing Agreement (APA) Forms 51, 52, and 54, streamlining application, withdrawal, compliance, and renewal procedures. Key changes include standardizing the APA fee to ₹20 lakh, aimed at enhancing efficiency and predictability in the Indian APA program.",
-    "freshness": "9h ago",
+    "ai_summary": "India's Central Board of Direct Taxes (CBDT) has revised APA Forms 51, 52, and 54, standardizing the ₹20 lakh fee for Advance Pricing Agreements. These changes aim to simplify withdrawal, compliance, and renewal procedures for APAs in India.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-08-09"
+    "archive_date": "2026-08-10"
   },
   {
     "id": "430fcb41b770",
@@ -26,10 +42,10 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Bangalore deleted major transfer pricing adjustments related to royalty, distribution, and software services, citing issues with comparability and the application of the 3% range. The tribunal also remanded issues concerning delayed receivables and lease payments for further consideration.",
-    "freshness": "10h ago",
+    "ai_summary": "The ITAT Bangalore deleted significant transfer pricing adjustments related to royalty, distribution, and software services, citing issues with comparability and the application of the 3% range. The tribunal remanded other issues, including delayed receivables and lease payments, for further consideration.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-08-09"
+    "archive_date": "2026-08-10"
   },
   {
     "id": "8f861860562f",
@@ -42,10 +58,10 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Bangalore ruled on comparable selection, excluding functionally dissimilar companies based on turnover and Related Party Transaction (RPT) filters. The tribunal remanded cases involving R Systems and Sasken, directing a recomputation of the Arm's Length Price.",
-    "freshness": "10h ago",
+    "ai_summary": "The ITAT Bangalore ruled on the exclusion of unsuitable comparables based on turnover, related-party transaction (RPT), and functional filters in transfer pricing cases. The tribunal remanded cases involving R Systems and Sasken, directing a recomputation of the arm's length price.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-08-09"
+    "archive_date": "2026-08-10"
   },
   {
     "id": "64dedc8039c7",
@@ -58,10 +74,10 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Bangalore partly allowed IKA India's appeal, directing specific transfer pricing adjustments for comparables, capacity utilisation, and working capital. This decision impacts the arm's length determination for associated enterprise transactions.",
-    "freshness": "11h ago",
+    "ai_summary": "The ITAT Bangalore partly allowed IKA India's appeal, mandating transfer pricing adjustments for comparables, capacity utilization, and working capital. This ruling highlights the importance of specific adjustments to ensure comparability in intercompany transactions.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-08-09"
+    "archive_date": "2026-08-10"
   },
   {
     "id": "1f954f49bf59",
@@ -74,10 +90,10 @@
     "lens": "Court decisions",
     "region": "APAC",
     "importance": 4,
-    "ai_summary": "The ITAT Panaji deleted a ₹20.34 crore transfer pricing adjustment, ruling that the Comparable Uncontrolled Price (CUP) method was appropriate. This decision favored CUP over TNMM, citing the existence of both internal and external comparables and functional differences in the TNMM comparable.",
-    "freshness": "18h ago",
+    "ai_summary": "The ITAT Panaji deleted a significant ₹20.34 crore transfer pricing adjustment, ruling that the Comparable Uncontrolled Price (CUP) method was appropriate. The tribunal found CUP preferable over the Transactional Net Margin Method (TNMM) given the existence of internal and external comparables and functional dissimilarities in the TNMM comparable.",
+    "freshness": "1d ago",
     "accessible": true,
-    "archive_date": "2026-08-09"
+    "archive_date": "2026-08-10"
   },
   {
     "id": "cfb92da09f8d",
@@ -926,69 +942,5 @@
     "freshness": "1d ago",
     "accessible": true,
     "archive_date": "2026-08-03"
-  },
-  {
-    "id": "89505bd1d4f0",
-    "title": "Transfer pricing treatment of acquired intangibles",
-    "summary": "Transfer pricing treatment of acquired intangibles thetaxadviser.com",
-    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNODduYXFSbjl1X2F4UTI1UllCOHp5Y2ZxUy1MX0I1M3RzNm92eGJnMGdTZENPTTUzUVFybFd6NFA3clBFWXZoM3Q3cG9uWU5jdjdJbk40RjRuTXphTjM1Y2xidXFLRl91aUY4dEsyT3diamtkbkRrcVhGZW1hTk1uaVY5TDNKcC10VFJoYjdUQ1U1cXJuejlhbm84eDNEdw?oc=5",
-    "source": "thetaxadviser.com",
-    "pub": "Fri, 31 Jul 2026 23:00:09 GMT",
-    "open": true,
-    "lens": "Intangibles & IP",
-    "region": "Global",
-    "importance": 4,
-    "ai_summary": "This article discusses the transfer pricing implications and appropriate methodologies for valuing and remunerating acquired intangibles within a multinational enterprise. It provides insights into how the arm's length principle applies to such assets post-acquisition. ",
-    "freshness": "1d ago",
-    "accessible": true,
-    "archive_date": "2026-08-02"
-  },
-  {
-    "id": "106370aa63e8",
-    "title": "UN to Grapple With Global South’s Transfer Pricing Data Gap",
-    "summary": "UN to Grapple With Global South’s Transfer Pricing Data Gap news.bloombergtax.com",
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNNFZRSEFIV0ZpMWZyZHBfNGJSMkUyVDQ1WHktMjYxOEhVOFp2YzdDbkwyUkRGdmJLOWl2SEduTnROWGVMaEZHdXk0aDBhb1pDby1QNFh0T29OQ2xTeDNsRkliM2VSamVuU3g1MWZWQU1UVmlneGFHejNLRVloOGxwNUZNSWxwaWd0TkVIbDZlbFdXaHB3cUdzWE1XREU3blA4OXNjVzlaX3YyaTNjYmFWdzlCcXNUQUd5TzUw?oc=5",
-    "source": "news.bloombergtax.com",
-    "pub": "Fri, 31 Jul 2026 08:45:00 GMT",
-    "open": true,
-    "lens": "General TP",
-    "region": "Global",
-    "importance": 3,
-    "ai_summary": "The United Nations is addressing the significant transfer pricing data gap faced by countries in the Global South, which hinders their ability to effectively administer and enforce transfer pricing rules. This initiative aims to explore solutions and build capacity to improve access to relevant comparable data.",
-    "freshness": "1d ago",
-    "accessible": true,
-    "archive_date": "2026-08-02"
-  },
-  {
-    "id": "f05a9b45d9da",
-    "title": "PwC Legal overturns UAH 150M+ transfer pricing assessment at Ukraine's Supreme Court - PwC",
-    "summary": "PwC Legal overturns UAH 150M+ transfer pricing assessment at Ukraine's Supreme Court PwC",
-    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNbkVyVjRQR3g4RTYwZHdKUV9aQUY3VzVTYWc1TmpQbWo1NEM5UjBxU3RjUEM1WHlUWEgtVE0ybFRsU3hVU0NRX0FWbmFvVzdFejVhS1g3alRrMGd4SS1Rc1lwVEhHMzZVSGJXbUFwWmNjaFlKUko1ZHNCVWtZbV8zYXo3WXBxT21HZS1oOWxyd19IdFlvaWc?oc=5",
-    "source": "PwC",
-    "pub": "Fri, 31 Jul 2026 18:49:05 GMT",
-    "open": true,
-    "lens": "Court decisions",
-    "region": "Other",
-    "importance": 5,
-    "ai_summary": "PwC Legal successfully overturned a transfer pricing assessment of over UAH 150 million at Ukraine's Supreme Court. This landmark ruling by the highest court provides significant precedent on transfer pricing matters in Ukraine.",
-    "freshness": "1d ago",
-    "accessible": true,
-    "archive_date": "2026-08-02"
-  },
-  {
-    "id": "90f330d746de",
-    "title": "HCL's Corporate Guarantees For Overseas Subsidiaries Attract Transfer Pricing Provisions: Delhi ITAT - LiveLawBiz",
-    "summary": "HCL's Corporate Guarantees For Overseas Subsidiaries Attract Transfer Pricing Provisions: Delhi ITAT LiveLawBiz",
-    "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxOMEgzVlpiaXFsY2VDMVNQaGVHaEs5Zy1nc01hX252SFdpSUtXNnVEY2RRSS1KQTlKMXh1dmtLUUVVNWRsN3o4cXRId1pnTWlYQkJTaTNNZG5YSlhHeFdVMm4xeUR5SF8zMHFscWUyNEQ4Vm1RajZTcG91R29RcTRJcnRNcTlsX1pYRkw2U29sOUVBY3FpNUYybENRZFA2YnpCUjlrTWpQcG0zTURqRUNtenMybng5aWt5LTJESDNyemt5dVpSNWpOSWpNbk9ndHIxeXc5RXJadTlrSndtbGVSSVJR0gHnAUFVX3lxTE12cVlQMnY5UUJOZWVyTWk3eGxYQ3dqTWlfQUlFR0d4TFppQWw4MkRTZ2d4QUg2aEJvaWlYOHBldXdicHZFVTJWeGtGX1cycXBkSWxNd3JnZ0k0UjFEUDF6eFNkYkUxT1Y5aFVrbmZIWWJnT0dKUWRRVjlyMWxDMVo1WVVpNG40WXo0V0lMMEoyUUZrbHhuRGNOZ0JuaHpjQTl1YmhnVmowQUs2S3BKMjBHMUhBS3d2RTNpQW5yZEN0cnRfTjE0TDdGb3VtanlXbjFqTnVVeTA1VUwtTDhkT3ZCclZPeXlUdw?oc=5",
-    "source": "LiveLawBiz",
-    "pub": "Fri, 31 Jul 2026 15:06:13 GMT",
-    "open": true,
-    "lens": "Finance & treasury",
-    "region": "APAC",
-    "importance": 4,
-    "ai_summary": "The Delhi ITAT ruled that HCL's corporate guarantees provided to its overseas subsidiaries attract transfer pricing provisions. This decision emphasizes the importance of arm's length remuneration for intra-group financial guarantees in India.",
-    "freshness": "1d ago",
-    "accessible": true,
-    "archive_date": "2026-08-02"
   }
 ]
